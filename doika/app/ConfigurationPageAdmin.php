@@ -20,7 +20,7 @@ class ConfigurationPageAdmin extends Model
         
     }
     //создание или обновление одной конфигурации
-    static private function createOrUpdateConfiguration($configurationName,$value){
+    static public function createOrUpdateConfiguration($configurationName,$value){
         
         if(!$value){
             $value = "";

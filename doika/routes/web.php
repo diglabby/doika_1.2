@@ -32,4 +32,14 @@ Route::get('/doika/show-list', 'CompanyAdminController@showList');
 Route::get('/doika/show-configurations', 'ConfigurationAdminController@showConfigurations');
 Route::post('/doika/save-configurations', 'ConfigurationAdminController@saveConfigurations');
 
+
+
+
 Route::get('/doika', 'CompanyAdminController@showList');
+
+
+Route::get('/doika/client-{id}', 'CompanyClientController@getCompanyClient')->where('id', '[0-9]+');
+Route::get('/doika/donate-{id}', 'DonateController@donate')->where('id', '[0-9]+');
+Route::post('/doika/payment-record-db-{id}', 'DonateController@recordPayment')->where('id', '[0-9]+');
+Route::get('/doika/payment-record-db-{id}', 'DonateController@recordPayment')->where('id', '[0-9]+');
+
