@@ -105,8 +105,7 @@
     loadDonateModule();    
     addPopUpToDOM();
 
-    var moduleDOMElement = document.querySelector("#module-donate");
-    var banner = document.querySelector(".donateHeader");
+    var moduleDOMElement = document.querySelector("#module-donate");    
     var popup = document.querySelector("#doikaPopup");
 
     document.querySelector(".b-popup-close").addEventListener("click", function () {
@@ -121,17 +120,7 @@
     });
 
 
-   document.querySelector(".donateHeader__button").addEventListener("click", function () {
-     scrollToDonateWindow(moduleDOMElement);
-   });
 
-   window.addEventListener("scroll", function () {
-     checkDonateModuleVisibility(moduleDOMElement , banner);
-   });
-
-   window.addEventListener("resize", function () {
-     checkDonateModuleVisibility(moduleDOMElement, banner);
-   });
 
    window.addEventListener("beforeunload", function(e) {
      var top  = window.pageYOffset || document.documentElement.scrollTop;
@@ -206,9 +195,20 @@
               break;
             case 'dockHeader':
                 dockBannerToTop();
-              break;  
-              
-              
+                   var moduleDOMElement = document.querySelector("#module-donate");    
+                   var banner = document.querySelector(".donateHeader");
+                   document.querySelector(".donateHeader__button").addEventListener("click", function () {
+                     scrollToDonateWindow(moduleDOMElement);
+                   });
+
+                   window.addEventListener("scroll", function () {
+                     checkDonateModuleVisibility(moduleDOMElement , banner);
+                   });
+
+                   window.addEventListener("resize", function () {
+                     checkDonateModuleVisibility(moduleDOMElement, banner);
+                   });
+              break;      
           }
 
         }, false);
