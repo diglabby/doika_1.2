@@ -30,17 +30,17 @@ class CompanyPageClient extends Model
             "height" => 200, //высота модуля
             "width" => 300, //ширина модуля
 
-            "backgroundColor" => "white", //цвет фона модуля
-            "buttonColor" => "green", //цвет кнопок и подсветки поля
+            "backgroundColor" => "rgba(231, 238, 244, 1)", //цвет фона модуля
+            "buttonColor" => "rgba(148, 200, 64, 0.34)", //цвет кнопок и подсветки поля
 
-            "titleTextColor" => "black", //цвет шрифта заголовка
-            "titleFontSize" => "18px", //размер шрифта заголовка
+            "titleTextColor" => "#31383e", //цвет шрифта заголовка
+            "titleFontSize" => "22px", //размер шрифта заголовка
 
-            "descriptionTextColor" => "black", //цвет шрифта описания
-            "descriptionFontSize" => "18px", //размер шрифта заголовка
+            "descriptionTextColor" => "#31383e", //цвет шрифта описания
+            "descriptionFontSize" => "13px", //размер шрифта заголовка
 
-            "buttonTextColor" => "white", //цвет шрифта на кнопках
-            "buttonFontSize" => "18px", //размер шрифта заголовка
+            "buttonTextColor" => "#f7fafc", //цвет шрифта на кнопках
+            "buttonFontSize" => "20px", //размер шрифта заголовка
 
 
             "currency" => 'руб.', //валюта

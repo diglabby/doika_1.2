@@ -1,5 +1,4 @@
-var paymentStyle =
-  `
+var paymentStyle =  `
   html {
     padding:0;
     margin:0;

@@ -43,6 +43,9 @@
     document.getElementsByClassName("module-donate__description")[0].style.fontSize = data.descriptionFontSize;
 
     updateIframeHeight()
+    window.parent.doika.title = data.innerText.companyTitle;
+    window.parent.doika.result = data.innerText.resultsText;
+    window.parent.postMessage(['dockHeader', true], '*')
   }
 
   function AJAXRequest(url, callback) {
@@ -130,6 +133,7 @@
     document.querySelector(".payment__description").addEventListener("click", PopUpShow);
     loadDataConfig();
     loadConfig();
+    
   }
 
   window.addEventListener("load", init);

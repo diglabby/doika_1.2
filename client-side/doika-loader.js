@@ -36,8 +36,8 @@
 
       donateHeader.className = 'donateHeader';
 
-      var title = "Збіраем на новы сэрвер";
-      var goal = "Сабрана 250 з 300 рублеў";
+      var title = window.doika.title;
+      var goal = window.doika.result;
       var button = "Дапамагчы";
 
       donateHeader.innerHTML = '<p class="donateHeader__title">' + title + '</p>' +
@@ -102,8 +102,7 @@
       window.scrollTop = sessionStorage.getItem('doikaPosition');
     }
 
-    loadDonateModule();
-    dockBannerToTop();
+    loadDonateModule();    
     addPopUpToDOM();
 
     var moduleDOMElement = document.querySelector("#module-donate");
@@ -205,6 +204,11 @@
                 wrapper.innerHTML = '<iframe id="module-donate" src="client-side/module-donate-main.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
                 window.doikaSum = 0;
               break;
+            case 'dockHeader':
+                dockBannerToTop();
+              break;  
+              
+              
           }
 
         }, false);
