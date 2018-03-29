@@ -21,7 +21,7 @@
     document.getElementsByClassName("progress-bar__track")[0].style.width = (((data.currentFunds * progressBarWidth) / data.expectedFunds)) + "px";
     document.getElementsByClassName("module-donate__button-confirm")[0].innerText = data.innerText.acceptButtonText;
     document.getElementsByClassName("module-donate__text-input")[0].placeholder = data.innerText.textInputPlaceholder;
-    document.getElementsByClassName("mainImage")[0].src = 'assets/img/' + data.innerText.titleImage;
+    document.getElementsByClassName("mainImage")[0].src = '/doika/public/images/' + data.innerText.titleImage;
     document.getElementsByClassName("payment__description")[0].innerText = data.innerText.paymentDescriptionTitle;
     document.getElementsByClassName("result__description")[0].insertAdjacentHTML( 'beforeend', data.innerText.resultsText);
 
