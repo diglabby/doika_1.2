@@ -36,6 +36,13 @@ class CompanyPageAdmin extends Model
         // создание конфигурации новой компании
         $newCompanyConfiguration = new Company_configuration; 
         $newCompanyConfiguration->company_id = $newCompany->id;
+        
+        if($request->company_progress_bar == "on"){
+            $newCompanyConfiguration->company_progress_bar = 1;
+        }else{
+            $newCompanyConfiguration->company_progress_bar = 0;
+        }
+        
         if($request->hasFile('photo')){
             $newCompanyConfiguration->photo = Uploader::upload($request);
         }else{
@@ -86,11 +93,15 @@ class CompanyPageAdmin extends Model
            $companyArr['check']='checked'; 
         }
         
-        $companyArr['time_start']=$company->company_configurations()->first()
+         $companyArr['time_start']=$company->company_configurations()->first()
                 ->time_start;
+        $dateStart = strtotime($companyArr['time_start']);       
+                
         $companyArr['time_start']= date('Y-m-d', strtotime($companyArr['time_start']));
         $companyArr['time_end']= $company->company_configurations()->first()
                 ->time_end;
+        $dateEnd = strtotime($companyArr['time_end']);
+        
         $companyArr['time_end']= date('Y-m-d', strtotime($companyArr['time_end']));
         $companyArr['company_progress_bar']=$company->company_configurations()->first()
                 ->company_progress_bar;
@@ -101,6 +112,16 @@ class CompanyPageAdmin extends Model
         $companyArr['description']=$company->company_lang_informations()
                 ->where('company_lang',self::getLangDefault())
                 ->first()->company_description_lang;
+       
+        
+        $dateNow = time();       
+        
+        $progress_start = round(($dateNow - $dateStart) / 86400);
+        $progress_end = round(($dateEnd - $dateStart) / 86400);
+        $companyArr['daysPassed'] = ($progress_start >= 0) ? $progress_start: 0;
+        $companyArr['daysToFinish'] = ($progress_end >= 0) ? $progress_end: 0;
+
+        
         return $companyArr;
         
     }

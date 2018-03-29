@@ -11,6 +11,7 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="js/jquery-ui.min.js"></script>
 	<script src="index.js"></script>
+  <script src="js/companyPage.js"></script>
 </head>
 <body>
 
@@ -57,11 +58,11 @@
       <div class="form__info row">
 				<div class="requested-sum">
 					<label for="sum" class="input-title">Патрэбная сума, BYN</label>
-					<input class="requested-sum__input" type="text" name="required_amount" placeholder="100000" id="sum" value="{{ old('required_amount') }}">
+					<input class="requested-sum__input" type="text" name="required_amount" placeholder="неабходна сабраць" id="sum" value="{{ old('required_amount') }}">
 				</div>
         <div class="shortcode">
 					<label for="shortcode" class="input-title">Шорткод</label>
-					<input class="shortcode__input" type="text" name="shortcode" id="shortcode" value="{{ old('required_amount') }}">
+					<input class="shortcode__input" type="text" name="shortcode" id="shortcode" readonly value="У распрацоўцы">                   
 				</div>
 			</div>
 
@@ -76,32 +77,33 @@
 				</div>
 			</div>
 
-   
+
 
 			<div class="form__desc">
 				<div class="desc-of-company">
-					<label for="descriptionOfCompany" class="input-title">Апісанне кампаніі</label>
-					<textarea class="desc-of-company__input" name="description" id="descriptionOfCompany" cols="30" rows="10">{{ old('description') }}</textarea>
-          <p class="remark">* Аб’ём тэкста з малюнкам - 418 сiмвалау з прабелам</p>
+					<label for="descriptionOfCompany" class="input-title title-info title-star"><span>Апісанне кампаніі</span></label>
+					<textarea class="desc-of-company__input" name="description" id="descriptionOfCompany" cols="30" rows="10" maxlength="418">{{ old('description') }}</textarea>
+                    <p class="remark">* Аб’ём тэкста з малюнкам - 418 сiмвалау з прабелам</p>
+                    <p class="remark">* Аб’ём тэкста без малюнка - 488 сiмвалау з прабелам</p>
 				</div>
 				<div class="add-picture">
-          <label for="photo" class="input-title photo-select">Змяніць малюнак</label>
-          <input  type="file" name="photo" id="photo" class="photo-input">
-          <div class="selected-picture"><img id="image" src=""></div>
+                  <label for="photo" class="input-title photo-select">Змяніць малюнак</label>
+                  <input  type="file" name="photo" id="photo" class="photo-input">
+                  <div class="selected-picture"><img id="image" src=""></div>
 				</div>
 			</div>
 
-			<div class="form__other row">
-				<div class="toggler">
-					<label class="switch">
-						<input type="checkbox">
-						<span class="slider round"></span>
-					</label>
-					<span class="toggler__label input-title">Выключыць прагрэс-бар</span>
-				</div>
-				<button id="test" class="main-buttons__create-campaign add-language-button" class="input-title">Дадаць мову</button>
-			</div>
-      <button class="submit-button main-buttons__create-campaign">Захаваць</button>
+          <div class="form__other row">
+            <div class="toggler">
+                <label class="switch">
+                    <input class="progress_bar_checkbox" type="checkbox" name="company_progress_bar">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggler__label input-title">Выключыць прагрэс-бар</span>
+            </div>
+            <button id="test" class="main-buttons__create-campaign add-language-button" class="input-title">Дадаць мову</button>
+        </div>
+        <button class="submit-button main-buttons__create-campaign">Захаваць</button>
 		</form>
 
 	</main>

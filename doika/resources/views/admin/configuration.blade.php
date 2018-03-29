@@ -55,18 +55,18 @@
       <div class="row">
 				<div class="input">
 					<label for="conf-color-banner" class="conf-title">Колер фону верхняга банера</label>
-					<input type="text" placeholder="TextField" id="conf-color-banner" name="color_top_banner" class="input__input" value="{{ isset($color_top_banner) ? $color_top_banner : '' }}">
+					<input type="text" placeholder="TextField" id="conf-color-banner" name="color-banner" class="input__input" value="{{ isset($color) ? $color : '' }}">
 				</div>
         <div class="input">
 					<label for="conf-color-banner-button" class="conf-title">Колер кнопкі "Дапамагчы"</label>
-					<input type="text" placeholder="TextField" id="conf-color-banner-button" name="color_button_help" class="input__input" value="{{ isset($color_button_help) ? $color_button_help : '' }}">
+					<input type="text" placeholder="TextField" id="conf-color-banner-button" name="conf-color-banner-button" class="input__input" value="{{ isset($color) ? $color : '' }}">
 				</div>
 			</div>
 
       <div class="row">
 				<div class="input">
 					<label for="conf-color-summ-button" class="conf-title">Колер кнопак з сумамі</label>
-					<input type="text" placeholder="TextField" id="conf-color-summ-button" name="color_button_amount" class="input__input" value="{{ isset($color_button_amount) ? $color_button_amount : '' }}">
+					<input type="text" placeholder="TextField" id="conf-color-summ-button" name="conf-color-summ-button" class="input__input" value="{{ isset($color) ? $color : '' }}">
 				</div>
 			</div>
 

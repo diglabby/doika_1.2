@@ -615,7 +615,7 @@ main {
   border: 1px solid white;
   -webkit-box-shadow: inset 1px 1px 1px grey, inset 1px 1px 2px grey, 1px 1px 1px grey;
           box-shadow: inset 1px 1px 1px grey, inset 1px 1px 2px grey, 1px 1px 1px grey;
-  padding-left: 10px;
+
   position: relative;
 }
 .progress-bar__indicator {
@@ -701,7 +701,7 @@ main {
     max-width: 100%;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    padding: 0px 2px 0px 6px;
+    padding: 0px 1px 0px 1px;
 }
 
 
@@ -733,4 +733,39 @@ main {
 .add-language-button {
   width: 150px;
   margin-right: 60px;
+}
+
+.title-star::after {
+  content: "*";
+  color: gray;
+  margin-left: 3px;
+  line-height: 5px;
+  vertical-align: top;
+}
+
+label[for="shortcode"]::after {
+  content: url(../images/info.png);  
+  margin-top: -10px;
+  margin-left: 3px;
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.conf-title::after {
+  content: url(../images/info.png);  
+  margin-top: -10px;
+  margin-left: 3px;
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  cursor: pointer;
+}
+
+#shortcode__copy {
+    width: auto;
+    height: 30px;
+    margin-left: 5px;
+    vertical-align: middle;
 }

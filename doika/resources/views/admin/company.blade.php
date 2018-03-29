@@ -58,11 +58,12 @@
       <div class="form__info row">
 				<div class="requested-sum">
 					<label for="sum" class="input-title">Патрэбная сума, BYN</label>
-					<input class="requested-sum__input" type="text" name="required_amount" placeholder="100000" id="sum" value="{{ $required_amount }}">
+					<input class="requested-sum__input" type="text" name="required_amount" placeholder="неабходна сабраць" id="sum" value="{{ $required_amount }}">
 				</div>
         <div class="shortcode">
 					<label for="shortcode" class="input-title">Шорткод</label>
-					<input class="shortcode__input" type="text" name="shortcode" id="shortcode" value="{{ $required_amount }}">
+					<input class="shortcode__input" type="text" name="shortcode" id="shortcode" readonly value="<div id='module-donate-wrapper' data-id='{{ $id }}'></div>">
+                    <button id="shortcode__copy" class="main-buttons__create-campaign" type="button">Скапіраваць</button>
 				</div>
 			</div>
 
@@ -80,20 +81,21 @@
 
       <div class="form__desc row">
         <div class="desc-of-company">
-          <label for="descriptionOfCompany" class="input-title">Колькасць дзен у актыўным стане</label>
+          <label class="input-title">Колькасць дзен у актыўным стане</label>
           <div class="progress-bar">
-            <div class="progress-bar__start-value">0</div>
-            <div class="progress-bar__end-value">100</div>
-            <div class="indicator"></div>
+            <div id="progress-start" class="progress-bar__start-value">{{ $daysPassed }}</div>
+            <div id="progress-end" class="progress-bar__end-value">{{ $daysToFinish }}</div>
+            <div class="progress-bar__indicator"></div>
           </div>
         </div>
       </div>
 
       <div class="form__desc">
         <div class="desc-of-company">
-          <label for="descriptionOfCompany" class="input-title">Апісанне кампаніі</label>
-          <textarea class="desc-of-company__input" name="description" id="descriptionOfCompany" cols="30" rows="10">{{ $description }}</textarea>
+          <label for="descriptionOfCompany" class="input-title title-info title-star">Апісанне кампаніі</label>
+          <textarea class="desc-of-company__input" name="description" id="descriptionOfCompany" cols="30" rows="10" maxlength="418">{{ $description }}</textarea>
           <p class="remark">* Аб’ём тэкста з малюнкам - 418 сiмвалау з прабелам</p>
+          <p class="remark">* Аб’ём тэкста без малюнка - 488 сiмвалау з прабелам</p>
         </div>
         <div class="add-picture">
           <label for="photo" class="input-title photo-select">Змяніць малюнак</label>
@@ -104,7 +106,13 @@
       <div class="form__other row">
 				<div class="toggler">
 					<label class="switch">
-						<input type="checkbox">
+
+                        @if ($company_progress_bar)
+                            <input class="progress_bar_checkbox" type="checkbox" name="company_progress_bar" value="0" checked>
+                        @else
+                            <input class="progress_bar_checkbox" type="checkbox" name="company_progress_bar" value="1">
+                        @endif
+
 						<span class="slider round"></span>
 					</label>
 					<span class="toggler__label input-title">Выключыць прагрэс-бар</span>
@@ -139,6 +147,6 @@
     </form>
   </div>
 
-  
+
 </body>
 </html>

@@ -68,8 +68,8 @@ class CompanyPageClient extends Model
                     "paymentDescriptionText" => $companyInformations->payment_description_lang,
                     "successfulPaymentMessage" => "Текст при удачном платеже",
                     "errorPaymentMessage" => "Текст при неудачном платеже"
-            ]
-            
+            ],
+            "showProgressBar" => $companyConfigurations->company_progress_bar
             
             
         ];

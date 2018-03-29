@@ -5,7 +5,7 @@ window.onload = function() {
     if(document.getElementsByClassName("add-lang__close")[0])
         document.getElementsByClassName("add-lang__close")[0].addEventListener("click", closePopUp);
     if(document.getElementsByClassName("button-delete")[0])
-        document.getElementsByClassName("button-delete")[0].addEventListener("click", showAlert);    
+        document.getElementsByClassName("button-delete")[0].addEventListener("click", showAlert);
 
 
 
@@ -36,7 +36,26 @@ window.onload = function() {
   		document.getElementById("alert").style.display = "none";
   		e.preventDefault();
   	}
+    if (document.getElementById( "progress-start" ) !== null) {
+        var progress_start = document.getElementById( "progress-start" ).innerHTML; 
+        var progress_end = document.getElementById( "progress-end" ).innerHTML;
+        $( ".progress-bar__indicator" ).width((progress_start * $( ".progress-bar" ).width()) / progress_end);
+    }
+    
+    var copyTextareaBtn = document.querySelector('#shortcode__copy');
+    if(copyTextareaBtn) {
+        copyTextareaBtn.addEventListener('click', function(e) {     
+          var copyTextarea = document.querySelector('#shortcode');
+          copyTextarea.focus();
+          copyTextarea.select();
 
+          try {
+            var successful = document.execCommand('copy');       
+          } catch (err) {
+            
+          }      
+        }); 
+    }    
 
   $( ".date__input" ).datepicker({
     showOn: "button",
@@ -44,6 +63,24 @@ window.onload = function() {
     buttonImageOnly: true,
     buttonText: "Select date",
     dateFormat: 'yy-mm-dd',
+  });
+
+  if($(".progress_bar_checkbox").checked) {
+    $(".toggler__label").text("Уключыць прагрэс-бар");
+  }
+  else {
+    $(".toggler__label").text("Выключыць прагрэс-бар");
+  }
+
+
+
+  $(".progress_bar_checkbox").change(function() {
+    if(this.checked) {
+      $(".toggler__label").text("Выключыць прагрэс-бар");
+    }
+    else {
+      $(".toggler__label").text("Уключыць прагрэс-бар");
+    }
   });
 
   $("#photo").on('change',function(e) {
