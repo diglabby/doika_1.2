@@ -1,6 +1,7 @@
 #module-donate {
   background-color: rgba(231, 238, 244, 1);
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   height: 100%;
 }
 html {
@@ -15,7 +16,8 @@ body, html {
 #module-donate > * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .module-donate__title {
@@ -49,10 +51,18 @@ body, html {
 
 #module-donate .module-donate__wrapper {
   padding: 25px 0 15px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 
 }
 
@@ -100,10 +110,18 @@ body, html {
   width: 100%;
   height: 300px;
   text-align: center;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .module-donate__message_title {
@@ -125,7 +143,8 @@ body, html {
   height: 30px;
   margin-top: 0;
   border-radius: 4px;
-  box-shadow: 0 1px 5px 0px #000;
+  -webkit-box-shadow: 0 1px 5px 0px #000;
+          box-shadow: 0 1px 5px 0px #000;
   cursor: pointer;
 }
 
@@ -213,11 +232,21 @@ body, html {
 
   #module-donate .module-donate__wrapper {
     padding: 25px 0 15px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .module-donate__description-wrapper {
@@ -243,7 +272,10 @@ body, html {
 @media all and (max-width: 450px) {
 
   #module-donate .module-donate__wrapper {
-    flex-direction: column-reverse;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
   }
 
   .module-donate__main-panel {

@@ -57,6 +57,13 @@
   font-weight: 700;
 }
 
+.donateHeader__title {
+  max-width: 50%;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .donateHeader .donateHeader__button {
   background-color:  #f26443;
   -webkit-box-shadow: 0px 1px 8.28px 0.72px rgba(0, 0, 0, 0.55);

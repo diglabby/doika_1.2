@@ -1,13 +1,12 @@
 (function() {
-
-
+  var toMain = false;
 
   function loadConfig() {
-       AJAXRequest(`/doika/client-${window.parent.doika.companyId}`, setConfigHTML)
+       AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigHTML)
   }
 
   function loadDataConfig() {
-     AJAXRequest(`/doika/client-${window.parent.doika.companyId}`, setConfigData)
+     AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigData)
   }
 
   function setConfigData(data) {
@@ -30,6 +29,10 @@
 
 
     updateIframeHeight();
+
+    window.parent.doika.title = data.innerText.companyTitle;
+    window.parent.doika.result = data.innerText.resultsText;
+    window.parent.postMessage(['dockHeader', true], '*')
   }
 
   function getBePaidJS(data) {
@@ -62,6 +65,10 @@
   }
 
   function back() {
+    if(toMain) {
+      window.top.location.href = '/#module-donate';
+
+    } else
      window.parent.postMessage(['doikaMain', true], '*')
   }
 
@@ -80,6 +87,7 @@
         var button = document.querySelector(".module-donate__message_button");
         var backbutton = document.querySelector(".module-donate__back-button");
         backbutton = backbutton.style.display = "none";
+        toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
         button.innerHTML = "Паспрабаваць яшчэ раз";
       break;
@@ -96,6 +104,7 @@
         button.innerHTML = "Паспрабаваць яшчэ раз";
         var backbutton = document.querySelector(".module-donate__back-button");
         backbutton = backbutton.style.display = "none";
+        toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
       break;
       case 'fail':
@@ -110,11 +119,12 @@
         var button = document.querySelector(".module-donate__message_button");
         button.innerHTML = "Паспрабаваць яшчэ раз";
         var backbutton = document.querySelector(".module-donate__back-button");
+        toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
         backbutton = backbutton.style.display = "none";
       break;
       default:
-        var url = `/doika/donate-${window.parent.doika.companyId}?donate=` + window.parent.doikaSum;
+        var url = '/doika/donate-' + window.parent.doika.companyId + '?donate=' + window.parent.doikaSum;
         AJAXRequest(url, getBePaidJS);
    }
 

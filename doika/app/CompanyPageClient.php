@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Company;
 //use App\Company_configuration;
 //use App\Company_lang_information;
+use App\ConfigurationPageAdmin;
+
 use App\CompanyPageAdmin;
 
 class CompanyPageClient extends Model
@@ -42,7 +44,10 @@ class CompanyPageClient extends Model
             "buttonTextColor" => "#f7fafc", //цвет шрифта на кнопках
             "buttonFontSize" => "20px", //размер шрифта заголовка
 
-
+            "color_top_banner" => ConfigurationPageAdmin::getConfiguration('color_top_banner',true),
+            "color_button_help" => ConfigurationPageAdmin::getConfiguration('color_button_help',true),
+            "color_button_amount" => ConfigurationPageAdmin::getConfiguration('color_button_amount',true),
+            
             "currency" => 'руб.', //валюта
 
             "currentFunds" => self::getCurrentFunds($id), //собрано на данный момент средств, число

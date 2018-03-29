@@ -36,4 +36,11 @@ class CompanyAdminController extends Controller
         return view('admin.list',$data);
         
     }
+     public function showListConditions($id){
+        $data = CompanyListAdmin::getListAdminPageConditions($id);
+        $data['conditions_id'] = $id;
+        return view('admin.list',$data);
+       //dump ($data);
+    
+    }
 }

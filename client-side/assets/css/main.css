@@ -1,6 +1,7 @@
 #module-donate {
   background-color: rgba(231, 238, 244, 1);
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   height: 100%;
 }
 html {
@@ -15,7 +16,8 @@ body, html {
 #module-donate > * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .module-donate__title {
@@ -44,10 +46,18 @@ body, html {
 
   #module-donate .module-donate__wrapper {
     padding: 25px 0 15px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 
   }
 
@@ -77,18 +87,28 @@ body, html {
     height: 100%;
     width: 100%;
     border: 10px solid rgba(255, 255, 255, 0.5);
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     left: 0;
   }
 
   .module-donate__input {
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
 
   .module-donate__button-select {
@@ -102,6 +122,8 @@ body, html {
     font-size: 20px;
     font-weight: 400;
     background-color: rgba(148, 200, 64, 0.34);
+    -webkit-transition: color 0.3s, background-color 0.3s;
+    -o-transition: color 0.3s, background-color 0.3s;
     transition: color 0.3s, background-color 0.3s;
     cursor: pointer;
     white-space: nowrap;
@@ -109,6 +131,8 @@ body, html {
 
   .module-donate__button-select.clicked {
     background-color: #94c840 !important;
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
     outline: none;
   }
@@ -119,6 +143,8 @@ body, html {
 
   .module-donate__button-select:hover {
     color: #31383e;
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
     transition: color 0.3s;
   }
 
@@ -133,17 +159,23 @@ body, html {
     font-size: 20px;
     font-weight: 400;
     background-color: #94c840;
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
     transition: color 0.3s;
     cursor: pointer;
   }
 
   .module-donate__button-confirm:hover {
     color: #31383e;
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
     transition: color 0.3s;
   }
 
   .module-donate__button-confirm:focus {
     color: #31383e;
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
     transition: color 0.3s;
     outline: none;
   }
@@ -161,7 +193,8 @@ body, html {
     height: 55px;
     border: 2px solid white;
     margin: 5px 0px 10px 10px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     padding: 0px 5px 0px 15px;
     color: #31383e;
     -moz-appearance:textfield;
@@ -177,6 +210,21 @@ body, html {
     border:2px solid #94c840;
     border-radius: 2px;
     outline: none;
+  }
+
+  .module-donate__text-input::-webkit-input-placeholder {
+    color:  #94989c;
+    font-weight: 400;
+  }
+
+  .module-donate__text-input:-ms-input-placeholder {
+    color:  #94989c;
+    font-weight: 400;
+  }
+
+  .module-donate__text-input::-ms-input-placeholder {
+    color:  #94989c;
+    font-weight: 400;
   }
 
   .module-donate__text-input::placeholder {
@@ -198,10 +246,14 @@ body, html {
     color: red;
     max-height: 0;
     overflow: hidden;
+    -webkit-transition: max-height 0.3s;
+    -o-transition: max-height 0.3s;
     transition: max-height 0.3s;
   }
   .module-donate__warning.opened {
-    max-height: 26px;
+    max-height: 35px;
+    -webkit-transition: max-height 0.3s;
+    -o-transition: max-height 0.3s;
     transition: max-height 0.3s;
   }
 
@@ -221,6 +273,9 @@ body, html {
     text-align: left;
     clear: both;
     margin: 0;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .module-donate__progress-bar {
@@ -228,15 +283,17 @@ body, html {
     width: 100%;
     height: 20px;
     font-size: 0;
+    overflow: hidden;
   }
 
   .module-donate__progress-bar .progress-bar__track {
     background-color:  #5899d0;
-    width: 60%;
+    width: 0px;
     height: 100%;
     position: relative;
     display: inline-block;
     z-index: 1;
+    overflow:hidden;	
   }
 
   .module-donate__progress-bar .progress-bar__track::after {
@@ -249,7 +306,8 @@ body, html {
     border-left: 10px solid #5899d0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    box-sizing: unset;
+    -webkit-box-sizing: unset;
+            box-sizing: unset;
   }
 
   .module-donate__progress-bar .progress-bar__track::before {
@@ -263,7 +321,8 @@ body, html {
     border-left: 10px solid #7faed6;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    box-sizing: unset;
+    -webkit-box-sizing: unset;
+            box-sizing: unset;
   }
 
   .progress-bar__pointer {
@@ -299,9 +358,16 @@ body, html {
   #module-donate .module-donate__footer {
     font-size: 0;
     text-align: left;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-top: 15px;
   }
 
@@ -389,11 +455,21 @@ body, html {
 
   #module-donate .module-donate__wrapper {
     padding: 25px 0 15px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .module-donate__main-panel {
@@ -421,11 +497,19 @@ body, html {
   .module-donate__input {
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
   }
 
   .module-donate__button-select {
@@ -435,9 +519,16 @@ body, html {
   #module-donate .module-donate__footer {
     font-size: 0;
     text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-top: 15px;
   }
 
@@ -450,6 +541,14 @@ body, html {
 }
 
 @media all and (max-width: 450px) {
+
+  .module-donate__text-input.warning-open, .module-donate__button-confirm.warning-open {
+    margin-top: 0;
+  }
+  .module-donate__warning {
+    margin: 0;
+  }
+
   .module-donate__button-select {
     margin: 0px 0px 15px 0px;
   }

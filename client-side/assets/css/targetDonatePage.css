@@ -1,12 +1,14 @@
   #module-donate-wrapper {
     background-color: rgba(231, 238, 244, 0.91);
-    box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.37);
+    -webkit-box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.37);
+            box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.37);
   }
 
   #module-donate-wrapper > * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
 
   #module-donate-wrapper {
@@ -27,6 +29,8 @@
       position: fixed;
       top: 0;
       z-index: 100;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
       transition: all 0.2s;
 
   }
@@ -57,19 +61,29 @@
       font-family: Roboto, sans-serif;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
   }
 
   .b-popup .b-popup-content-img {
     width: 100%;
     height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     margin: 10px 0 10px 0;
 
-        box-shadow: 0 7px 6px -6px #777, 0 -7px 6px -6px #999;
+        -webkit-box-shadow: 0 7px 6px -6px #777, 0 -7px 6px -6px #999;
+
+                box-shadow: 0 7px 6px -6px #777, 0 -7px 6px -6px #999;
   }
 
   .b-popup-content-img img {
@@ -112,7 +126,9 @@
       font-family: Roboto, sans-serif;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
   }
 }
 

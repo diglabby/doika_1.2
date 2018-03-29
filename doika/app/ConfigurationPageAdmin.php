@@ -8,7 +8,7 @@ use App\Doika_configuration;
 class ConfigurationPageAdmin extends Model
 {
     //ïîëó÷åíèå îäíîé êîíôèãóðàöèè
-    static private function getConfiguration($configurationName,$getString){
+    static public function getConfiguration($configurationName,$getString){
         $configuration = Doika_configuration::where('configuration_name',$configurationName)
                 ->first(); 
         if($configuration && $getString){
@@ -52,7 +52,12 @@ class ConfigurationPageAdmin extends Model
         $configurations['key_market'] = self::getConfiguration('key_market',true);
         // ïîëó÷àåì öâåò ìîäóëÿ
         $configurations['color'] = self::getConfiguration('color',true);
-        
+        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ†Ð²ÐµÑ‚ Ñ„Ð¾Ð½Ð° Ð²ÐµÑ€Ñ…Ð½ÐµÐ³Ð¾ Ð±Ð°Ð½Ð½ÐµÑ€Ð°
+        $configurations['color_top_banner'] = self::getConfiguration('color_top_banner',true);
+        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ†Ð²ÐµÑ‚ ÐºÐ½Ð¾Ð¿ÐºÐ¸ "Ð”Ð°Ð¿Ð°Ð¼Ð°Ð³Ñ‡Ñ‹"
+        $configurations['color_button_help'] = self::getConfiguration('color_button_help',true);
+        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ†Ð²ÐµÑ‚ ÐºÐ½Ð¾Ð¿Ð¾Ðº Ñ ÑÑƒÐ¼Ð¼Ð°Ð¼Ð¸
+        $configurations['color_button_amount'] = self::getConfiguration('color_button_amount',true);
         
         
         
@@ -68,6 +73,9 @@ class ConfigurationPageAdmin extends Model
        self::createOrUpdateConfiguration('id_market',$request->id_market);
        self::createOrUpdateConfiguration('key_market',$request->key_market);
        self::createOrUpdateConfiguration('color',$request->color);
+       self::createOrUpdateConfiguration('color_top_banner',$request->color_top_banner);
+       self::createOrUpdateConfiguration('color_button_help',$request->color_button_help);
+       self::createOrUpdateConfiguration('color_button_amount',$request->color_button_amount);
     }
     
     

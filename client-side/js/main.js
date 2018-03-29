@@ -3,11 +3,11 @@
   var sum = 0;
 
   function loadConfig() {
-       AJAXRequest(`/doika/client-${window.parent.doika.companyId}`, setConfigHTML)
+       AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigHTML)
   }
 
   function loadDataConfig() {
-     AJAXRequest(`/doika/client-${window.parent.doika.companyId}`, setConfigData)
+     AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigData)
   }
 
   function setConfigData(data) {
@@ -17,8 +17,8 @@
   function setConfigHTML(data) {
     document.getElementsByClassName("module-donate__title")[0].innerText = data.innerText.companyTitle;
     document.getElementsByClassName("module-donate__description")[0].innerHTML = data.innerText.companyDescription;
-
-    document.getElementsByClassName("progress-bar__track")[0].style.width = data.currentFunds + "px";
+    var progressBarWidth = document.getElementsByClassName("module-donate__progress-bar")[0].clientWidth;
+    document.getElementsByClassName("progress-bar__track")[0].style.width = (((data.currentFunds * progressBarWidth) / data.expectedFunds)) + "px";
     document.getElementsByClassName("module-donate__button-confirm")[0].innerText = data.innerText.acceptButtonText;
     document.getElementsByClassName("module-donate__text-input")[0].placeholder = data.innerText.textInputPlaceholder;
     document.getElementsByClassName("mainImage")[0].src = 'assets/img/' + data.innerText.titleImage;
@@ -26,14 +26,14 @@
     document.getElementsByClassName("result__description")[0].insertAdjacentHTML( 'beforeend', data.innerText.resultsText);
 
     document.getElementById('module-donate').style.backgroundColor = data.backgroundColor;
-    var buttons = document.getElementsByTagName('button');
+    /*var buttons = document.getElementsByTagName('button');
     for( var i = 0; i < buttons.length; i++) {
       buttons[i].style.backgroundColor = data.buttonColor;
       buttons[i].style.backgroundColor = data.buttonColor;
       buttons[i].style.backgroundColor = data.buttonColor;
       buttons[i].style.fontSize = data.buttonFontSize;
       buttons[i].style.color = data.buttonTextColor;
-    }
+    }*/
 
 
     document.getElementsByClassName("module-donate__title")[0].style.color = data.titleTextColor;
@@ -45,7 +45,10 @@
     updateIframeHeight()
     window.parent.doika.title = data.innerText.companyTitle;
     window.parent.doika.result = data.innerText.resultsText;
+
     window.parent.postMessage(['dockHeader', true], '*')
+
+
   }
 
   function AJAXRequest(url, callback) {
@@ -108,6 +111,17 @@
       hideAlert();
     }
   }
+  
+  function resetSumm(e) {
+    if ( e.target.tagName === "INPUT" ) {
+      var buttons = document.getElementsByClassName("module-donate__button-select");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("clicked");
+      }
+
+      sum = e.target.value;      
+    }
+  }
 
   function submitbutton() {
 
@@ -115,10 +129,10 @@
       document.getElementsByClassName("module-donate__warning")[0].innerHTML = "Сума не абрана альбо не ўведзена!";
       showAlert();
     } else if ( sum > dataConfig.maxDonateAmount) {
-      document.getElementsByClassName("module-donate__warning")[0].innerHTML = 'Ахвяраванне не можа быць большым за '+ dataConfig.maxDonate +' руб!';
+      document.getElementsByClassName("module-donate__warning")[0].innerHTML = 'Ахвяраванне не можа быць большым за '+ dataConfig.maxDonateAmount +' руб!';
       showAlert();
     } else if ( sum < dataConfig.minDonateAmount) {
-      document.getElementsByClassName("module-donate__warning")[0].innerHTML = 'Ахвяраванне не можа быць меньшым за '+ dataConfig.minDonate +' руб!';
+      document.getElementsByClassName("module-donate__warning")[0].innerHTML = 'Ахвяраванне не можа быць меньшым за '+ dataConfig.minDonateAmount +' руб!';
       showAlert();
     } else {
       window.parent.postMessage(['doikaSubmit', sum], '*')
@@ -131,9 +145,11 @@
     document.querySelector(".module-donate__text-input").addEventListener("keyup", calculateSumm);
     document.querySelector(".module-donate__button-confirm").addEventListener("click", submitbutton);
     document.querySelector(".payment__description").addEventListener("click", PopUpShow);
+    document.querySelector(".module-donate__text-input").addEventListener("click", resetSumm);
+    
     loadDataConfig();
     loadConfig();
-    
+
   }
 
   window.addEventListener("load", init);

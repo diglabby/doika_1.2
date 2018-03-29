@@ -15,9 +15,10 @@
   // Dock donate module banner to top of the page and slide down fixed elements(like top menus)
 
   function dockBannerToTop() {
+      if(!window.doika.bannerDocked) {
       document.body.classList.add("donateHeader__margin");
 
-      windowTranslated = true;
+      window.doika.bannerDocked = true;
 
       var elems = document.body.getElementsByTagName("*");
 
@@ -45,6 +46,7 @@
         '<p class="donateHeader__button">' + button + '</p>';
 
       root.appendChild(donateHeader);
+    }
   }
 
   function scrollToDonateWindow(moduleDOMElement) {
@@ -57,7 +59,7 @@
   function checkDonateModuleVisibility(moduleDOMElement, banner) {
       var rect = moduleDOMElement.getBoundingClientRect();
       var delta = 0;
-      if(windowTranslated) {
+      if(window.doika.bannerDocked) {
         var delta = 60;
       }
 
@@ -69,7 +71,7 @@
 
         banner.style.display = "none";
         document.body.classList.remove("donateHeader__margin");
-        windowTranslated = false;
+        window.doika.bannerDocked = false;
 
         for (var i in transformedElements) {
            transformedElements[i].classList.remove("donateHeader__transform");
@@ -83,7 +85,7 @@
         }
 
         document.body.classList.add("donateHeader__margin");
-        windowTranslated = true;
+        window.doika.bannerDocked = true;
       }
   }
 
@@ -102,10 +104,10 @@
       window.scrollTop = sessionStorage.getItem('doikaPosition');
     }
 
-    loadDonateModule();    
+    loadDonateModule();
     addPopUpToDOM();
 
-    var moduleDOMElement = document.querySelector("#module-donate");    
+    var moduleDOMElement = document.querySelector("#module-donate");
     var popup = document.querySelector("#doikaPopup");
 
     document.querySelector(".b-popup-close").addEventListener("click", function () {
@@ -124,7 +126,7 @@
 
    window.addEventListener("beforeunload", function(e) {
      var top  = window.pageYOffset || document.documentElement.scrollTop;
-     sessionStorage.setItem('doikaPosition', top);     
+     sessionStorage.setItem('doikaPosition', top);
      return null;
    });
 
@@ -194,25 +196,29 @@
                 window.doikaSum = 0;
               break;
             case 'dockHeader':
+              if(!document.querySelector(".donateHeader")) {
                 dockBannerToTop();
-                   var moduleDOMElement = document.querySelector("#module-donate");    
-                   var banner = document.querySelector(".donateHeader");
-                   document.querySelector(".donateHeader__button").addEventListener("click", function () {
-                     scrollToDonateWindow(moduleDOMElement);
-                   });
+                 var moduleDOMElement = document.querySelector("#module-donate-wrapper");
+                 var banner = document.querySelector(".donateHeader");
+                 document.querySelector(".donateHeader__button").addEventListener("click", function () {
+                   scrollToDonateWindow(moduleDOMElement);
+                 });
 
-                   window.addEventListener("scroll", function () {
-                     checkDonateModuleVisibility(moduleDOMElement , banner);
-                   });
+                 window.addEventListener("scroll", function () {
+                   checkDonateModuleVisibility(moduleDOMElement , banner);
+                 });
 
-                   window.addEventListener("resize", function () {
-                     checkDonateModuleVisibility(moduleDOMElement, banner);
-                   });
-              break;      
+                 window.addEventListener("resize", function () {
+                   checkDonateModuleVisibility(moduleDOMElement, banner);
+                 });
+               }
+            break;
           }
 
         }, false);
     }
+
+
 
     window.addEventListener("resize", function(e) {
       var donateModule = document.getElementById('module-donate');
@@ -231,22 +237,23 @@
       var div = document.createElement('div');
       div.className = "b-popup";
       div.id = "doikaPopup";
-      div.innerHTML = `<div class="b-popup-content">
-         <div class="b-popup-close"></div>
-         <h3>На гэтай старонцы ахвяраванне робіцца банкаўскай картай</h3>
-         <p>Грошы будуць прымацца як добраахвотныя ахвяраванні на статутную дзейнасць МГА "Фаланстэр" (falanster.by) і яго праекта Лічбавая майстэрня (it.falanster.by).</p>
-         <p>Па націсканні кнопкі “Ахвяруй!” для Вас будзе выведзеная адмысловая плацёжная форма працэсінгавай сістэмы <a href="https://bepaid.by/"><span style="color:#F7941E">be</span><span style="color:#65707B">Paid</span></a>.
-          Для аплаты Вам спатрэбіцца ўвесці дадзеныя сваёй карты і пацвердзіць плацёж кнопкай “Аплаціць N руб.”, дзе N ― вызначаная Вамі сума.
-          Мы прымаем плацяжы з наступных банкаўскіх картаў: MasterCard, Maestro, Visa, Visa Electron, Белкарт.</p>
-         <!--<div class="b-popup-content-img">
+      div.innerHTML = '<div class="b-popup-content">' +
+         '<div class="b-popup-close"></div>' +
+         '<h3>На гэтай старонцы ахвяраванне робіцца банкаўскай картай</h3>' +
+         '<p>Грошы будуць прымацца як добраахвотныя ахвяраванні на статутную дзейнасць МГА "Фаланстэр" (falanster.by) і яго праекта Лічбавая майстэрня (it.falanster.by).</p>' +
+         '<p>Па націсканні кнопкі “Ахвяруй!” для Вас будзе выведзеная адмысловая плацёжная форма працэсінгавай сістэмы <a href="https://bepaid.by/"><span style="color:#F7941E">be</span><span ' + 'style="color:#65707B">Paid</span></a>.' +
+          'Для аплаты Вам спатрэбіцца ўвесці дадзеныя сваёй карты і пацвердзіць плацёж кнопкай “Аплаціць N руб.”, дзе N ― вызначаная Вамі сума.' +
+          'Мы прымаем плацяжы з наступных банкаўскіх картаў: MasterCard, Maestro, Visa, Visa Electron, Белкарт.</p>' +
+         '<p>Плацяжы з банкаўскіх картак ажыццяўляюцца праз сістэму электронных плацяжоў <a href="https://bepaid.by/"><span style="color:#F7941E">be</span><span' + 'style="color:#65707B">Paid</span>.</a> Плацёжная форма сістэмы адпавядае ўсім патрабаванням бяспекі перадачы звестак (PCI DSS Level 1). Усе канфідэнцыйныя звесткі захоўваюцца ў' + 'зашыфраваным' + 'выглядзе і максімальна ўстойлівыя да ўзлому.</p>' +
+        ' <p>Зварот грашовых сум, калі вы ўжо здзейснілі ахвяраванне, не ажыццяўляецца.</p>' +
+      '</div>';
+
+      /*<!--<div class="b-popup-content-img">
            <img id="b-popup-content-img-visa" src="https://lh4.googleusercontent.com/9EEq8ZYJPpco2xK00gYJFFUx_Stj37Nb5wLQanbnBU5ELcPdOan1UAy_jeUqGNFdCAoWC0PT_5AXfjwhZcPrBR1JXsrf9XGcv58mR-ktyN0vPN77gRdOaXXg1i-oCKX-CzkKK4vl=s800">
            <img id="b-popup-content-img-belcard" src="https://lh6.googleusercontent.com/Bt1eFBKo9amovmut4a08H93W1863_8c-a24F5S-vvXiQkVTbk44B5x9O-k4bIz6S93spBuuUyAD8dVr4l7Hk-KCX6crgyMo8tN5NCra707A1sAlmzmVInE_NJKgWrf3rplqdIshN">
            <img id="b-popup-content-img-bepaid" src="img/bepaid.png">
            <img id="b-popup-content-img-mtbank" src="img/mtbank.png">
-         </div>-->
-         <p>Плацяжы з банкаўскіх картаr ажыццяўляюцца праз сістэму электронных плацяжоў <a href="https://bepaid.by/"><span style="color:#F7941E">be</span><span style="color:#65707B">Paid</span>.</a> Плацёжная форма сістэмы адпавядае ўсім патрабаванням бяспекі перадачы звестак (PCI DSS Level 1). Усе канфідэнцыйныя звесткі захоўваюцца ў зашыфраваным выглядзе і максімальна ўстойлівыя да ўзлому.</p>
-         <p>Зварот грашовых сум, калі вы ўжо здзейснілі ахвяраванне, не ажыццяўляецца.</p>
-      </div>`;
+         </div>-->*/
 
       document.body.appendChild(div);
   }
