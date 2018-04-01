@@ -7,13 +7,16 @@
 5) У браўзэры ўвесці адрас "{ваш хост}/doika" і стварыць неабходныя Вам кампаніі па зборы сродкаў
 6) Падключыць файлы js и css на тых старонках на якiх Вы жадаеце каб адлюстроувауся модуль doika
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src="client-side/doika-loader.js"></script>
 
 
 
-7) Зайсці ў адміністрацыйную частку выбраць там патрэбную кампанію і скапіяваць у полі шорт-код html-код блока прыёму ахвяраванняў для вашай кампаніі.
+7) Зайсці ў адміністратыуную частку "{ваш хост}/doika" выбраць там патрэбную кампанію і скапіяваць у полі шорт-код html-код блока прыёму ахвяраванняў для вашай кампаніі.
 8) На старонцы Вашай кампаніі ўставіць  html-код там дзе Вы хочаце бачыць ваш модуль.
 9) Все.
