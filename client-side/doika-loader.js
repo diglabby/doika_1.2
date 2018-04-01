@@ -158,7 +158,8 @@
 
   function loadDonateModule() {
 
-    var wrapper = document.getElementById('module-donate-wrapper');
+    var wrapper = document.getElementById("module-donate-wrappe");
+    window.doika = {};
     window.doika.companyId = wrapper.getAttribute("data-id");
 
     switch (getUrlParameter("message")) {
