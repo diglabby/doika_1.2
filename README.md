@@ -7,14 +7,10 @@
 5) У браўзэры ўвесці адрас "{ваш хост}/doika" і стварыць неабходныя Вам кампаніі па зборы сродкаў
 6) Падключыць файлы js и css на тых старонках на якiх Вы жадаеце каб адлюстроувауся модуль doika
 
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="client-side/doika-loader.js"></script>
+     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="client-side/doika-loader.js"></script>
 
 
 
