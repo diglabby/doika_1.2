@@ -57,6 +57,10 @@
 .donateHeader .donateHeader__title {
   font-weight: 700;
   width: 40%;
+  flex-grow: 1;
+}
+.donateHeader__goal {
+  flex-grow: 1;
 }
 
 .donateHeader__title {  
@@ -133,9 +137,11 @@
             transform: translateY(50px);
   }
   
-   .donateHeader__title {
+  .donateHeader .donateHeader__title {
     line-height: 20px;
     max-height: 20px;
+    width: auto;
+    max-width: 40%;
   }  
 
   .donateHeader {
