@@ -17,8 +17,8 @@
     <header class="doika__header">
       <div class="doika__header__wrapper">
         <div class="logo"></div>
-        <button class="button-quit" onclick="document.location.replace('/')">Перейти на сайт</button>
-        <button class="button-quit" onclick="document.location.replace('/doika/show-list')">Выход</button>
+        <button class="button-quit" onclick="document.location.replace('/')">Перайсці на сайт</button>
+        <button class="button-quit" onclick="document.location.replace('/doika/show-list')">Выхад</button>
       </div>
       <div class="doika__header__menu">
         <button class="menu__menu-item" onclick="document.location.replace('/doika/show-list')">Галоўная</button>

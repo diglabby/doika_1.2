@@ -48,8 +48,7 @@ class CompanyPageAdmin extends Model
         }else{
             $newCompanyConfiguration->photo = 'default.jpg';
         }
-        $newCompanyConfiguration->required_amount = $request->required_amount;
-        $newCompanyConfiguration->company_progress_bar = $request->company_progress_bar;
+        $newCompanyConfiguration->required_amount = $request->required_amount;       
         $newCompanyConfiguration->time_start = $request->time_start;
         $newCompanyConfiguration->time_end = $request->time_end;
         $newCompanyConfiguration->save();

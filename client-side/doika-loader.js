@@ -37,7 +37,7 @@
 
       donateHeader.className = 'donateHeader';
 
-      var title = window.doika.title;
+      var title = window.doika.title;     
       var goal = window.doika.result;
       var button = "Дапамагчы";
 
@@ -158,7 +158,7 @@
 
   function loadDonateModule() {
 
-    var wrapper = document.getElementById("module-donate-wrappe");
+    var wrapper = document.getElementById("module-donate-wrapper");
     window.doika = {};
     window.doika.companyId = wrapper.getAttribute("data-id");
 

@@ -41,6 +41,7 @@
   -o-transition: transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
+
 }
 
 .donateHeader p {
@@ -55,10 +56,11 @@
 
 .donateHeader .donateHeader__title {
   font-weight: 700;
+  width: 40%;
 }
 
-.donateHeader__title {
-  max-width: 50%;
+.donateHeader__title {  
+  max-height: 20px;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
   overflow: hidden;
@@ -130,6 +132,11 @@
         -ms-transform: translateY(50px);
             transform: translateY(50px);
   }
+  
+   .donateHeader__title {
+    line-height: 20px;
+    max-height: 20px;
+  }  
 
   .donateHeader {
     height: 50px;
@@ -144,6 +151,7 @@
 
   .donateHeader p {
     font-size: 13px;
+    line-height: 20px;   
   }
 
   .donateHeader .donateHeader__button {
@@ -157,6 +165,11 @@
   .donateHeader__margin {
     margin-top: 50px;
   }
+  
+   .donateHeader__title {
+    line-height: 40px;
+    max-height: 40px;
+  }  
 
   .donateHeader__transform {
     -webkit-transform: translateY(50px);
@@ -184,7 +197,7 @@
     font-family: Roboto, sans-serif;
     font-size: 16px;
     padding-left: 15px;
-    line-height: 20px;
+    line-height: 40px;
   }
 
   .donateHeader .donateHeader__button {
@@ -199,11 +212,15 @@
   .donateHeader {
     height: 60px;
   }
+  
+  .donateHeader__title {
+    line-height: 40px;
+    max-height: 40px;
+  }  
 
   .donateHeader p {
-    font-size: 20.8px;
-    line-height: 60px;
-    padding-left: 35px;
+    font-size: 20.8px;   
+    padding-left: 35px;    
   }
 
   .donateHeader .donateHeader__button {
