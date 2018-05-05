@@ -1,5 +1,4 @@
-var paymentStyle =  '\
-  html {\
+var paymentStyle = 'html {\
     padding:0;\
     margin:0;\
     overflow: hidden;\
@@ -30,6 +29,9 @@ var paymentStyle =  '\
   }\
   .visa {\
     background-image: none !important;\
+  }\
+  .payment-page {\
+    background: transparent !important;\
   }\
   .request_credit_card_number::before {\
     content: "НУМАР КАРТКІ";\

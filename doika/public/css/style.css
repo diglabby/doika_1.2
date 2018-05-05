@@ -251,6 +251,7 @@ button:hover, input[type="submit"]:active {
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	margin-bottom: 15px;
+  padding-left: 40px;
 }
 
 .row > div {
@@ -617,6 +618,7 @@ main {
           box-shadow: inset 1px 1px 1px grey, inset 1px 1px 2px grey, 1px 1px 1px grey;
 
   position: relative;
+  overflow: hidden;
 }
 .progress-bar__indicator {
   background-color: #5ca77e;
@@ -769,3 +771,67 @@ label[for="shortcode"]::after {
     margin-left: 5px;
     vertical-align: middle;
 }
+
+.checkbox-test-payments {
+  margin-top: -20px;
+  height: 20px;
+  width: 20px;
+}
+
+.conf-title.checkbox-title {
+  padding-left: 30px;
+}
+
+h2 {
+   color:  #31383e;
+   padding-bottom: 20px;
+   padding-top: 40px;
+   padding-left: 40px;
+}
+
+.login-popup h2 {
+  text-align: center;
+  padding-left: 0px;
+}
+
+
+
+.login-popup {      
+      width: 100%;
+      min-height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      overflow:hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+
+  }
+
+  .login-popup-content .row {      
+        padding-left: 100px;
+  }
+
+
+
+  .login-popup .login-popup-content {
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 20px;
+      width: 60%;
+      padding: 30px;
+      background-color: white;
+      -webkit-box-shadow: 0px 0px 10px #000;
+              box-shadow: 0px 0px 10px #000;
+      font-family: Roboto, sans-serif;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+  }

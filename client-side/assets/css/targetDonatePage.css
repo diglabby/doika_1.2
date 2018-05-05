@@ -118,7 +118,7 @@
       top: 20px;
 
       position: absolute;
-      width: 80%;
+      width: 100%;
       padding: 20px;
       background-color: white;
       -webkit-box-shadow: 0px 0px 10px #000;
@@ -133,6 +133,10 @@
 }
 
 @media all and (max-width: 450px) {
+
+  .b-popup .b-popup-content {
+  	 width: 100%;
+  }	
 
   .b-popup .b-popup-content p {
     text-indent: 5px;
