@@ -153,6 +153,12 @@ var paymentStyle = 'html {\
   	font-size: 17px;\
   	margin-top: 10.5px;\
   }\
+  body#iframe .credentials p {\
+      vertical-align: bottom;\
+  }\
+  body#iframe .credentials img {\
+    vertical-align: baseline;\
+  }\
   #request .exp-date input {\
   	width: 90px;\
   }\
@@ -186,6 +192,11 @@ var paymentStyle = 'html {\
   }\
   .submit-button .in-progress {\
     margin: 4px 0;\
+  }\
+  @media screen and (max-width: 321px) {\
+    .credentials {\
+      font-size: 10px !important;\
+    }\
   }\
   @media screen and (max-width: 250px) {\
     .inline-logo img {\
