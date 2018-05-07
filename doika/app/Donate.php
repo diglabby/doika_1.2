@@ -18,10 +18,18 @@ class Donate extends Model
                 ->first()->configuration_value;
         $keyMarket = Doika_configuration::where('configuration_name','key_market')
                 ->first()->configuration_value;
+        if(Doika_configuration::where('configuration_name','is_test')
+                ->first()->configuration_value == 1){
+            $is_test = true;
+        }else{
+            
+            $is_test = false;
+        
+        }
         $donate = $request->donate*100;
         $GetTokenParams = [
           "checkout" => [
-            "test" => true,
+            "test" => $is_test, //true,
             "transaction_type" => "payment",
             "version" => 2.1,
             "attempts" => 3,
