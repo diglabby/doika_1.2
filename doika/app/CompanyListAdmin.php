@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\ConfigurationPageAdmin;
 
 class CompanyListAdmin extends Model
 {
@@ -13,6 +14,10 @@ class CompanyListAdmin extends Model
         
         }
         $companiesArr = [];
+        if(!ConfigurationPageAdmin::getConfiguration('default_password',true)){
+           $companiesArr['first_login'] = 1;
+           
+        }
         foreach($companies as $company){
             $Arr['title']=$company->company_title;
             $Arr['id']=$company->id;

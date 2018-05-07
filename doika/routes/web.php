@@ -32,6 +32,7 @@ Route::get('/doika/show-list-{id}','CompanyAdminController@showListConditions')-
 // routes Configurations
 Route::get('/doika/show-configurations', 'ConfigurationAdminController@showConfigurations');
 Route::post('/doika/save-configurations', 'ConfigurationAdminController@saveConfigurations');
+Route::post('/doika/save-login', 'ConfigurationAdminController@changePassword');
 
 
 
