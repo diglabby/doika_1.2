@@ -11,10 +11,14 @@ class PasswordChange extends Model
     static public function changeProfile($request){
         
         $user = $request->user();
-        $user->email = $request->login;
-        $user->password = bcrypt($request->password);
+        if($request->login){
+            $user->email = $request->login;
+        }
+        if($request->password){
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
-        ConfigurationPageAdmin::createOrUpdateConfiguration('default_password',0);
+        ConfigurationPageAdmin::createOrUpdateConfiguration('default_password', '0');
         
         
     }

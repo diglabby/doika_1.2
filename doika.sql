@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
+-- version 4.5.5.1
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Апр 03 2018 г., 16:26
--- Версия сервера: 5.7.21-0ubuntu0.16.04.1
--- Версия PHP: 7.0.28-0ubuntu0.16.04.1
+-- Хост: 127.0.0.1
+-- Время создания: Май 08 2018 г., 22:02
+-- Версия сервера: 5.7.11
+-- Версия PHP: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `donate_db1`
+-- База данных: `doika`
 --
 
 -- --------------------------------------------------------
@@ -144,9 +144,11 @@ INSERT INTO `doika_configurations` (`id`, `configuration_name`, `configuration_v
 (18, 'id_market', '363', 1, '2018-02-14 08:12:36', '2018-02-14 15:39:13'),
 (19, 'key_market', '4f585d2709776e53d080f36872fd1b63b700733e7624dfcadd057296daa37df6', 1, '2018-02-14 08:12:36', '2018-02-14 15:39:13'),
 (17, 'token', '', 1, '2018-02-14 08:12:36', '2018-03-04 04:45:39'),
-(25, 'color_top_banner', '123', 1, '2018-03-28 19:44:30', '2018-03-31 08:52:23'),
-(26, 'color_button_help', '456', 1, '2018-03-28 19:44:30', '2018-03-28 19:56:03'),
-(27, 'color_button_amount', '789', 1, '2018-03-28 19:44:30', '2018-03-28 19:56:03');
+(25, 'color_top_banner', '', 1, '2018-03-28 19:44:30', '2018-05-08 18:36:04'),
+(26, 'color_button_help', '', 1, '2018-03-28 19:44:30', '2018-05-08 18:36:04'),
+(27, 'color_button_amount', '', 1, '2018-03-28 19:44:30', '2018-05-08 18:36:04'),
+(28, 'default_password', '', 1, NULL, '2018-05-08 18:36:05'),
+(29, 'is_test', 'true', 1, NULL, '2018-05-08 19:00:06');
 
 -- --------------------------------------------------------
 
@@ -281,8 +283,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'user-doika', 'pojarkov@tut.by', '$2y$10$oMp9V0LxPoar2U8KNSekvuK0lz/FhuaqCThtzuj9yjonR2iPtqaaG', 'xOLaXkN2xXsZjCf5Qi41Brju37PcD25kherehD0VROFhb3CEeAf4CnxMK9K0', '2018-03-18 08:38:39', '2018-03-18 08:38:39'),
-(2, 'doika-user', 'doika-user@mail.doc', '$2y$10$5IkXIzG/SYV.g4iEiIEu5eVdxQ2hInFbJkBZumURgRP.cV4f12Zim', 'mz3B3N2EmZUkqgXJfGaztMfuYl1MnMWTYQy9uXRNdV9xJfToIYovs2j3caY4', '2018-03-18 10:26:17', '2018-03-18 10:26:17');
+(2, 'doika-user', 'tyubik@tut.by', '$2y$10$g9BFQ80hSBXpLimJMytRhuUVXhO5FkYva63afVG.geR7vR38CTgVW', 'YCr9vH2mjdD5Mc7VCSY0pY8ZKCwmW4QUR6b6ACjXbF3EQsMkFmNXJnjxVZU2', '2018-03-18 10:26:17', '2018-05-08 18:36:05');
 
 --
 -- Индексы сохранённых таблиц
@@ -356,7 +357,7 @@ ALTER TABLE `company_lang_informations`
 -- AUTO_INCREMENT для таблицы `doika_configurations`
 --
 ALTER TABLE `doika_configurations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT для таблицы `migrations`
 --

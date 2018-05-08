@@ -17,6 +17,7 @@ class ConfigurationAdminController extends Controller
         
     }
     public function saveConfigurations(Request $request){
+        dump($request->test_payments);
         ConfigurationPageAdmin::createOrUpdateConfigurations($request);
         return redirect('/doika/show-configurations');
     }

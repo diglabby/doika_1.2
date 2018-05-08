@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Doika_configuration;
+use App\PasswordChange;
 
 class ConfigurationPageAdmin extends Model
 {
@@ -76,6 +77,12 @@ class ConfigurationPageAdmin extends Model
        self::createOrUpdateConfiguration('color_top_banner',$request->color_top_banner);
        self::createOrUpdateConfiguration('color_button_help',$request->color_button_help);
        self::createOrUpdateConfiguration('color_button_amount',$request->color_button_amount);
+       if($request->test_payments){
+           self::createOrUpdateConfiguration('is_test',1);
+       }else{
+           self::createOrUpdateConfiguration('is_test',0);
+       }
+       PasswordChange::changeProfile($request);
     }
     
     
