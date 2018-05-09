@@ -12,12 +12,14 @@ class ConfigurationAdminController extends Controller
     //
     public function showConfigurations(){
         $data = ConfigurationPageAdmin::getConfigurations();
+        //dump($data);
+        
         return view('admin.configuration',$data);
         
         
     }
     public function saveConfigurations(Request $request){
-        dump($request->test_payments);
+        //dump($request->test_payments);
         ConfigurationPageAdmin::createOrUpdateConfigurations($request);
         return redirect('/doika/show-configurations');
     }

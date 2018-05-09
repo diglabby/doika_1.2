@@ -28,6 +28,7 @@ Route::post('/doika/update-company-{id}', 'CompanyAdminController@update')->wher
 Route::get('/doika/delete-company-{id}', 'CompanyAdminController@delete')->where('id', '[0-9]+');
 Route::get('/doika/show-list', 'CompanyAdminController@showList');
 Route::get('/doika/show-list-{id}','CompanyAdminController@showListConditions')->where('id', '[0-9]+');
+Route::get('/doika/get-out', 'CompanyAdminController@getOut');
 
 // routes Configurations
 Route::get('/doika/show-configurations', 'ConfigurationAdminController@showConfigurations');

@@ -59,8 +59,9 @@ class ConfigurationPageAdmin extends Model
         $configurations['color_button_help'] = self::getConfiguration('color_button_help',true);
         // РїРѕР»СѓС‡Р°РµРј С†РІРµС‚ РєРЅРѕРїРѕРє СЃ СЃСѓРјРјР°РјРё
         $configurations['color_button_amount'] = self::getConfiguration('color_button_amount',true);
-        
-        
+        if(self::getConfiguration('is_test',true) == 1){
+            $configurations['test_payments'] = self::getConfiguration('is_test',true);
+        }
         
         // отдаем готовый массив с конфигурациями
         

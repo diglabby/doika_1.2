@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateCompany;
 use App\CompanyPageAdmin;
 use App\CompanyListAdmin;
@@ -42,5 +43,10 @@ class CompanyAdminController extends Controller
         return view('admin.list',$data);
        //dump ($data);
     
+    }
+    public function getOut(){
+        Auth::logout();
+        return redirect('/');
+
     }
 }
