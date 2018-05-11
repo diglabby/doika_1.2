@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/doika') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Doika') }}
                     </a>
                 </div>
 
@@ -43,7 +43,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('login') }}">Лагін</a></li>
                             <!-- <li><a href="#">Register</a></li> -->
                         @else
                             <li class="dropdown">

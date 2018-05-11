@@ -73,7 +73,7 @@
 
 				<div class="input">
 					<label for="conf-color" class="conf-title checkbox-title">Адключыць тэставыя плацежы</label>
-					<input class="checkbox-test-payments" type="checkbox" name="test_payments" "{{ isset($test_payments) ? 'checked' : '' }}">
+					<input class="checkbox-test-payments" type="checkbox" name="test_payments" {{isset($test_payments) ? 'checked' : ''}}>
 				</div>
 			</div>
 
