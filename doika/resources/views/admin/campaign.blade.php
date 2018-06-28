@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="js/jquery-ui.min.js"></script>
-	<script src="js/companyPage.js"></script>
+	<script src="js/campaignPage.js"></script>
 
 </head>
 <body>
@@ -31,13 +31,13 @@
 
 		<div class="breadcrumbs">Адмін > Галоўная старонка > Асобная кампанія</div>
 
-		<form class="form" name="updateCompany" action="/doika/update-company-{{ $id }}" method="post" enctype="multipart/form-data">
-			<div class="form__doCompanyActive">
+		<form class="form" name="updateCampaign" action="/doika/update-campaign-{{ $id }}" method="post" enctype="multipart/form-data">
+			<div class="form__doCampaignActive">
 				<div>
-					<input type="checkbox" name="company_active" id="doCompanyActive" {{ isset($check) ? $check : '' }}>
-					<label for="doCompanyActive">Зрабіць кампанію актыўнай</label>
+					<input type="checkbox" name="campaign_active" id="doCampaignActive" {{ isset($check) ? $check : '' }}>
+					<label for="doCampaignActive">Зрабіць кампанію актыўнай</label>
 				</div>
-				<button id="button-delete" class="button-delete"><a href="/doika/delete-company-{{ $id }}">Выдаліць кампанію</a></button>
+				<button id="button-delete" class="button-delete"><a href="/doika/delete-campaign-{{ $id }}">Выдаліць кампанію</a></button>
 			</div>
       @if (count($errors) > 0)
          <div>
@@ -49,9 +49,9 @@
         </div>
       @endif
 
-      <div class="company-name">
-				<label for="nameOfCompany" class="input-title">Назва кампаніі</label>
-				<input class="company-name__input" placeholder="Aб’ём тэксту павiнен быць не больш за 112 сiмвалау з прабелами" type="text" name="title" id="nameOfCompany" value="{{ $name }}">
+      <div class="campaign-name">
+				<label for="nameOfCampaign" class="input-title">Назва кампаніі</label>
+				<input class="campaign-name__input" placeholder="Aб’ём тэксту павiнен быць не больш за 112 сiмвалау з прабелами" type="text" name="title" id="nameOfCampaign" value="{{ $name }}">
 			</div>
 
 
@@ -80,7 +80,7 @@
 			</div>
 
       <div class="form__desc row">
-        <div class="desc-of-company">
+        <div class="desc-of-campaign">
           <label class="input-title">Колькасць дзен у актыўным стане</label>
           <div class="progress-bar">
             <div id="progress-start" class="progress-bar__start-value">{{ $daysPassed }}</div>
@@ -91,9 +91,9 @@
       </div>
 
       <div class="form__desc">
-        <div class="desc-of-company">
-          <label for="descriptionOfCompany" class="input-title title-info title-star">Апісанне кампаніі</label>
-          <textarea class="desc-of-company__input" name="description" id="descriptionOfCompany" cols="30" rows="10" maxlength="418">{{ $description }}</textarea>
+        <div class="desc-of-campaign">
+          <label for="descriptionOfCampaign" class="input-title title-info title-star">Апісанне кампаніі</label>
+          <textarea class="desc-of-campaign__input" name="description" id="descriptionOfCampaign" cols="30" rows="10" maxlength="418">{{ $description }}</textarea>
           <p class="remark">* Аб’ём тэкста з малюнкам - 418 сiмвалау з прабелам</p>
           <p class="remark">* Аб’ём тэкста без малюнка - 488 сiмвалау з прабелам</p>
         </div>
@@ -107,10 +107,10 @@
 				<div class="toggler">
 					<label class="switch">
 
-                        @if ($company_progress_bar)
-                            <input class="progress_bar_checkbox" type="checkbox" name="company_progress_bar" value="0" checked>
+                        @if ($campaign_progress_bar)
+                            <input class="progress_bar_checkbox" type="checkbox" name="campaign_progress_bar" value="0" checked>
                         @else
-                            <input class="progress_bar_checkbox" type="checkbox" name="company_progress_bar" value="1">
+                            <input class="progress_bar_checkbox" type="checkbox" name="campaign_progress_bar" value="1">
                         @endif
 
 						<span class="slider round"></span>

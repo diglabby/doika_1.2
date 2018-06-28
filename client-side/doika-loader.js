@@ -160,7 +160,7 @@
 
     var wrapper = document.getElementById("module-donate-wrapper");
     window.doika = {};
-    window.doika.companyId = wrapper.getAttribute("data-id");
+    window.doika.campaignId = wrapper.getAttribute("data-id");
 
     switch (getUrlParameter("message")) {
       case '1':

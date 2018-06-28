@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class Campaign_lang_information extends Model
 {
     //����� ������ ����-��-������ � ������� ��� �������� ��������
     public function campaign(){

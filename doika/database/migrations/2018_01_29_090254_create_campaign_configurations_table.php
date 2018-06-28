@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanyConfigurationsTable extends Migration
+class CreateCampaignConfigurationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCompanyConfigurationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_configurations', function (Blueprint $table) {
+        Schema::create('campaign_configurations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned()->unique();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->integer('campaign_id')->unsigned()->unique();
+            $table->foreign('campaign_id')->references('id')->on('campaigns');
             $table->string('photo');
             $table->double('required_amount');
-            $table->boolean('company_progress_bar');
+            $table->boolean('campaign_progress_bar');
             $table->timestamp('time_start');
             $table->timestamp('time_end');
             $table->timestamps();
@@ -33,6 +33,6 @@ class CreateCompanyConfigurationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_configurations');
+        Schema::dropIfExists('campaign_configurations');
     }
 }

@@ -18,7 +18,7 @@ class PaymentImplementation extends Model
             $message = file_get_contents('php://input');
             $message = json_decode($message);
             $payment = new Payment;
-            $payment->company_id = $id;
+            $payment->campaign_id = $id;
             $payment->amount = $message->transaction->amount * 0.01;
             $payment->token_payment = $message->transaction->credit_card->token;
             $payment->save();
