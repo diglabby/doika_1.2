@@ -14,21 +14,21 @@
 ///////////////////////////////////////////////////////////////////////////////
 // наладочные маршруты
 //Route::get('/doika/list', 'DevController@getListPage');
-//Route::get('/doika/company', 'DevController@getCompanyPage');
+//Route::get('/doika/campaign', 'DevController@getCampaignPage');
 //Route::get('/doika/configuration', 'DevController@getConfigurationPage');
 ////////////////////////////////////////////////////////////////////////////////
 
 
 Route::group(['middleware' => 'auth'], function () {
-// routes Companies
+// routes Campaigns
 Route::get('/doika/create', 'DevController@getCreatePage');
-Route::post('/doika/create', 'CompanyAdminController@create');
-Route::get('/doika/show-company-{id}', 'CompanyAdminController@show')->where('id', '[0-9]+');
-Route::post('/doika/update-company-{id}', 'CompanyAdminController@update')->where('id', '[0-9]+');
-Route::get('/doika/delete-company-{id}', 'CompanyAdminController@delete')->where('id', '[0-9]+');
-Route::get('/doika/show-list', 'CompanyAdminController@showList');
-Route::get('/doika/show-list-{id}','CompanyAdminController@showListConditions')->where('id', '[0-9]+');
-Route::get('/doika/get-out', 'CompanyAdminController@getOut');
+Route::post('/doika/create', 'CampaignAdminController@create');
+Route::get('/doika/show-campaign-{id}', 'CampaignAdminController@show')->where('id', '[0-9]+');
+Route::post('/doika/update-campaign-{id}', 'CampaignAdminController@update')->where('id', '[0-9]+');
+Route::get('/doika/delete-campaign-{id}', 'CampaignAdminController@delete')->where('id', '[0-9]+');
+Route::get('/doika/show-list', 'CampaignAdminController@showList');
+Route::get('/doika/show-list-{id}','CampaignAdminController@showListConditions')->where('id', '[0-9]+');
+Route::get('/doika/get-out', 'CampaignAdminController@getOut');
 
 // routes Configurations
 Route::get('/doika/show-configurations', 'ConfigurationAdminController@showConfigurations');
@@ -38,12 +38,12 @@ Route::post('/doika/save-login', 'ConfigurationAdminController@changePassword');
 
 
 
-Route::get('/doika', 'CompanyAdminController@showList');
+Route::get('/doika', 'CampaignAdminController@showList');
 
 });
 
 
-Route::get('/doika/client-{id}', 'CompanyClientController@getCompanyClient')->where('id', '[0-9]+');
+Route::get('/doika/client-{id}', 'CampaignClientController@getCampaignClient')->where('id', '[0-9]+');
 Route::get('/doika/donate-{id}', 'DonateController@donate')->where('id', '[0-9]+');
 Route::post('/doika/payment-record-db-{id}', 'DonateController@recordPayment')->where('id', '[0-9]+');
 Route::get('/doika/payment-record-db-{id}', 'DonateController@recordPayment')->where('id', '[0-9]+');

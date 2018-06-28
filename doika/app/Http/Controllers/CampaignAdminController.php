@@ -4,41 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\CreateCompany;
-use App\CompanyPageAdmin;
-use App\CompanyListAdmin;
+use App\Http\Requests\CreateCampaign;
+use App\CampaignPageAdmin;
+use App\CampaignListAdmin;
 
-class CompanyAdminController extends Controller
+class CampaignAdminController extends Controller
 {
     //
-    public function create(CreateCompany $request){
-        CompanyPageAdmin::createCompany($request);
+    public function create(CreateCampaign $request){
+        CampaignPageAdmin::createCampaign($request);
         
         return redirect('/doika/show-list');
         
     
     }
     public function show($id){
-        $data = CompanyPageAdmin::getCompanyPage($id);
-        return view('admin.company', $data);
+        $data = CampaignPageAdmin::getCampaignPage($id);
+        return view('admin.campaign', $data);
     }
-    public function update($id, CreateCompany $request){
-        CompanyPageAdmin::updateCompanyPage($id, $request);
+    public function update($id, CreateCampaign $request){
+        CampaignPageAdmin::updateCampaignPage($id, $request);
         return back();
     }
     public function delete($id){
         
-        CompanyPageAdmin::deleteCompany($id);
+        CampaignPageAdmin::deleteCampaign($id);
         return redirect('/doika/show-list');
         
     }
     public function showList(){
-        $data = CompanyListAdmin::getListAdminPage();
+        $data = CampaignListAdmin::getListAdminPage();
         return view('admin.list',$data);
         
     }
      public function showListConditions($id){
-        $data = CompanyListAdmin::getListAdminPageConditions($id);
+        $data = CampaignListAdmin::getListAdminPageConditions($id);
         $data['conditions_id'] = $id;
         return view('admin.list',$data);
        //dump ($data);

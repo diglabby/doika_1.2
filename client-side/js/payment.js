@@ -2,11 +2,11 @@
   var toMain = false;
 
   function loadConfig() {
-       AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigHTML)
+       AJAXRequest('/doika/client-' + window.parent.doika.campaignId, setConfigHTML)
   }
 
   function loadDataConfig() {
-     AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigData)
+     AJAXRequest('/doika/client-' + window.parent.doika.campaignId, setConfigData)
   }
 
   function setConfigData(data) {
@@ -14,8 +14,8 @@
   }
 
   function setConfigHTML(data) {
-    document.getElementsByClassName("module-donate__title")[0].innerText = data.innerText.companyTitle;
-    document.getElementsByClassName("module-donate__description")[0].innerHTML = data.innerText.companyDescription;
+    document.getElementsByClassName("module-donate__title")[0].innerText = data.innerText.campaignTitle;
+    document.getElementsByClassName("module-donate__description")[0].innerHTML = data.innerText.campaignDescription;
     document.getElementsByClassName("payment__description")[0].innerText = data.innerText.paymentDescriptionTitle;
     document.getElementsByClassName("result__description")[0].insertAdjacentHTML( 'beforeend', data.innerText.resultsText);
 
@@ -30,7 +30,7 @@
 
     updateIframeHeight();
 
-    window.parent.doika.title = data.innerText.companyTitle;
+    window.parent.doika.title = data.innerText.campaignTitle;
     window.parent.doika.result = data.innerText.resultsText;
     window.parent.postMessage(['dockHeader', true], '*')
   }
@@ -124,7 +124,7 @@
         backbutton = backbutton.style.display = "none";
       break;
       default:
-        var url = '/doika/donate-' + window.parent.doika.companyId + '?donate=' + window.parent.doikaSum;
+        var url = '/doika/donate-' + window.parent.doika.campaignId + '?donate=' + window.parent.doikaSum;
         AJAXRequest(url, getBePaidJS);
    }
 

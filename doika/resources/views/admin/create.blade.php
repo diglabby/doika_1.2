@@ -11,7 +11,7 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="js/jquery-ui.min.js"></script>
 	<script src="index.js"></script>
-  <script src="js/companyPage.js"></script>
+  <script src="js/campaignPage.js"></script>
 </head>
 <body>
 
@@ -32,11 +32,11 @@
 
 		<div class="breadcrumbs">Адмін > Галоўная старонка > Стварэнне кампаніі</div>
 
-		<form class="form" name="createCompany" action="/doika/create" enctype="multipart/form-data" method="post">
-			<div class="form__doCompanyActive">
+		<form class="form" name="createCampaign" action="/doika/create" enctype="multipart/form-data" method="post">
+			<div class="form__doCampaignActive">
 				<div>
-					<input type="checkbox" name="company_active" id="doCompanyActive">
-					<label for="doCompanyActive" class="input-title doCompanyActive">Зрабіць кампанію актыўнай</label>
+					<input type="checkbox" name="campaign_active" id="doCampaignActive">
+					<label for="doCampaignActive" class="input-title doCampaignActive">Зрабіць кампанію актыўнай</label>
 				</div>
 			</div>
       @if (count($errors) > 0)
@@ -49,9 +49,9 @@
         </div>
       @endif
 
-			<div class="company-name">
-				<label for="nameOfCompany" class="input-title">Назва кампаніі</label>
-				<input class="company-name__input" placeholder="Aб’ём тэксту павiнен быць не больш за 112 сiмвалау з прабелами" type="text" name="title" id="nameOfCompany" value="{{ old('title') }}">
+			<div class="campaign-name">
+				<label for="nameOfCampaign" class="input-title">Назва кампаніі</label>
+				<input class="campaign-name__input" placeholder="Aб’ём тэксту павiнен быць не больш за 112 сiмвалау з прабелами" type="text" name="title" id="nameOfCampaign" value="{{ old('title') }}">
 			</div>
 
 
@@ -80,9 +80,9 @@
 
 
 			<div class="form__desc">
-				<div class="desc-of-company">
-					<label for="descriptionOfCompany" class="input-title title-info title-star"><span>Апісанне кампаніі</span></label>
-					<textarea class="desc-of-company__input" name="description" id="descriptionOfCompany" cols="30" rows="10" maxlength="418">{{ old('description') }}</textarea>
+				<div class="desc-of-campaign">
+					<label for="descriptionOfCampaign" class="input-title title-info title-star"><span>Апісанне кампаніі</span></label>
+					<textarea class="desc-of-campaign__input" name="description" id="descriptionOfCampaign" cols="30" rows="10" maxlength="418">{{ old('description') }}</textarea>
                     <p class="remark">* Аб’ём тэкста з малюнкам - 418 сiмвалау з прабелам</p>
                     <p class="remark">* Аб’ём тэкста без малюнка - 488 сiмвалау з прабелам</p>
 				</div>
@@ -96,7 +96,7 @@
           <div class="form__other row">
             <div class="toggler">
                 <label class="switch">
-                    <input class="progress_bar_checkbox" type="checkbox" name="company_progress_bar">
+                    <input class="progress_bar_checkbox" type="checkbox" name="campaign_progress_bar">
                     <span class="slider round"></span>
                 </label>
                 <span class="toggler__label input-title">Выключыць прагрэс-бар</span>

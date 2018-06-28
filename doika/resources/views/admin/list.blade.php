@@ -88,18 +88,18 @@
 				</tr>
 			</thead>
 			<tbody>
-    @if(isset($companies))
-      @foreach($companies as $company)
+    @if(isset($campaigns))
+      @foreach($campaigns as $campaign)
 				<tr>
-					<td><a href="/doika/show-company-{{ $company['id'] }}">{{ $company['title'] }}</a></td>
-					<td>{{ $company['active'] }}</td>
-					<td>{{ $company['collected_amount']}}</td>
-					<td>{{ $company['required_amount'] }}</td>
-					<td>{{ $company['count_payments'] }}</td>
-					<td>{{ $company['avg_payment'] }}</td>
-					<td>{{ $company['time_start'] }}</td>
-					<td>{{ $company['time_end'] }}</td>
-					<td>{{ $company['time_to_end'] }}</td>
+					<td><a href="/doika/show-campaign-{{ $campaign['id'] }}">{{ $campaign['title'] }}</a></td>
+					<td>{{ $campaign['active'] }}</td>
+					<td>{{ $campaign['collected_amount']}}</td>
+					<td>{{ $campaign['required_amount'] }}</td>
+					<td>{{ $campaign['count_payments'] }}</td>
+					<td>{{ $campaign['avg_payment'] }}</td>
+					<td>{{ $campaign['time_start'] }}</td>
+					<td>{{ $campaign['time_end'] }}</td>
+					<td>{{ $campaign['time_to_end'] }}</td>
 				</tr>
       @endforeach
 		@endif

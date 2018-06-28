@@ -73,7 +73,7 @@ button:hover, input[type="submit"]:active {
   font-weight: 400;
 }
 
-.form__doCompanyActive, .form__info, .form__dates, .form__desc, .form__other {
+.form__doCampaignActive, .form__info, .form__dates, .form__desc, .form__other {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -87,17 +87,17 @@ button:hover, input[type="submit"]:active {
 	padding-bottom: 30px
 }
 
-.form__doCompanyActive {
+.form__doCampaignActive {
 	-webkit-box-align: center;
 	    -ms-flex-align: center;
 	        align-items: center;
 }
 
-.input-title.doCompanyActive {
+.input-title.doCampaignActive {
   display: inline;
 }
 
-.company-name, .requested-sum, .desc-of-company, .lang-name, .lang-desc {
+.campaign-name, .requested-sum, .desc-of-campaign, .lang-name, .lang-desc {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -108,16 +108,16 @@ button:hover, input[type="submit"]:active {
 }
 
 
-.company-name {
+.campaign-name {
   margin-bottom: 15px;
 }
 
-.form__doCompanyActive div {
+.form__doCampaignActive div {
 	-ms-flex-item-align: start;
 	    align-self: flex-start;
 }
 
-.company-name__input {
+.campaign-name__input {
 	width: 90%;
   height: 27px;
   border: 1px solid white;
@@ -131,7 +131,7 @@ button:hover, input[type="submit"]:active {
   margin-bottom: 15px;
 }
 
-.desc-of-company__input {
+.desc-of-campaign__input {
   background-color:  #ffffff;
   width: 710px;
   height: 150px;
@@ -331,7 +331,7 @@ td a {
   margin-right: 70px;
 }
 
-.label-company {
+.label-campaign {
 	color: #B55489;
 	margin-bottom: 27px;
 }

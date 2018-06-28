@@ -2,5 +2,7 @@ dist/
 node_modules/
 .cache/
 package-lock.json
-doika/.env;
+doika/.env
 index.html
+.idea/
+doika/public/images/
