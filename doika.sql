@@ -63,7 +63,7 @@ CREATE TABLE `campaign_configurations` (
 --
 
 INSERT INTO `campaign_configurations` (`id`, `campaign_id`, `photo`, `required_amount`, `campaign_progress_bar`, `time_start`, `time_end`, `created_at`, `updated_at`) VALUES
-(1, 1, 'information_items_574.jpg', 123, NULL, '2012-08-07 21:00:00', '2018-04-19 21:00:00', '2018-03-25 14:31:55', '2018-03-31 12:05:40');
+(1, 1, '345x230.png', 123, NULL, '2012-08-07 21:00:00', '2018-04-19 21:00:00', '2018-03-25 14:31:55', '2018-03-31 12:05:40');
 
 -- --------------------------------------------------------
 
