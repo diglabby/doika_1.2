@@ -163,6 +163,7 @@
     document.querySelector(".module-donate__button-confirm").addEventListener("click", submitbutton);
     document.querySelector(".payment__description").addEventListener("click", PopUpShow);
     document.querySelector(".module-donate__text-input").addEventListener("click", resetSumm);
+    document.querySelector(".module-donate__text-input").addEventListener("keypress", isNumberKey, true);
     
     loadDataConfig();
     loadConfig();
@@ -177,6 +178,16 @@
 
   function updateIframeHeight() {
     window.parent.postMessage(['updateIframeHeight', true], '*')
+  }
+
+  function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      evt.preventDefault();
+      return false;
+    }else{
+      return true;
+    }
   }
 
 }());
