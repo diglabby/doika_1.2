@@ -152,7 +152,9 @@
       document.getElementsByClassName("module-donate__warning")[0].innerHTML = 'Ахвяраванне не можа быць меньшым за '+ dataConfig.minDonateAmount +' руб!';
       showAlert();
     } else {
-      window.parent.postMessage(['doikaSubmit', sum], '*')
+      window.parent.postMessage(['doikaSubmit', sum], '*');
+      var scrolled = window.parent.window.pageYOffset;
+      document.cookie = "pageYOffset=" + scrolled + "; path=/;";
     }
   }
 

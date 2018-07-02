@@ -90,6 +90,7 @@
         toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
         button.innerHTML = "Паспрабаваць яшчэ раз";
+        afterPayScroll();
       break;
       case 'decline':
         var bePaidForm = document.querySelector(".donate-bePaid__form");
@@ -106,6 +107,7 @@
         backbutton = backbutton.style.display = "none";
         toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
+        afterPayScroll();
       break;
       case 'fail':
         var bePaidForm = document.querySelector(".donate-bePaid__form");
@@ -122,6 +124,7 @@
         toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
         backbutton = backbutton.style.display = "none";
+        afterPayScroll();
       break;
       default:
         var url = '/doika/donate-' + window.parent.doika.campaignId + '?donate=' + window.parent.doikaSum;
@@ -147,4 +150,17 @@
     window.parent.postMessage(['updateIframeHeight', true], '*')
   }
 
+  function afterPayScroll() {
+    // возвращает cookie если есть или undefined
+    function getCookie( name ) {
+      var matches = document.cookie.match( new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent( matches[1] ) : null;
+    }
+
+    if( getCookie( 'pageYOffset' ) ) {
+      window.parent.scrollTo( 0, getCookie ( 'pageYOffset' ) );
+    }
+  }
 }());
