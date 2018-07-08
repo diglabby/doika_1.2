@@ -118,8 +118,8 @@ var paymentStyle = 'html {\
     max-width: 365px;\
     height: 186px;\
     position:relative;\
-    background: url("http://it2donate.falanster.by/client-side/assets/img/front-card.png"),\
-    url("http://it2donate.falanster.by/client-side/assets/img/back-card.png");\
+    background: url("' + parent.document.location.protocol + '//'+ parent.document.location.host + '/client-side/assets/img/front-card.png"),\
+    url("' + parent.document.location.protocol + '//'+ parent.document.location.host + '/client-side/assets/img/back-card.png");\
     background-repeat: no-repeat;\
     background-position: left top, right 20px;\
   }\
