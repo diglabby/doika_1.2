@@ -36,7 +36,7 @@
 			<div class="row">
 				<div class="input">
 					<label for="conf-login" class="conf-title">Лагін</label>
-					<input type="text" placeholder="Login" id="conf-login" name="login" class="input__input" value="{{ isset($login) ? $login : '' }}">
+					<input type="text" placeholder="Login" id="conf-login" name="login" class="input__input" value="{{ Auth::user()->email }}">
 				</div>
 				
 			</div>
