@@ -95,4 +95,15 @@ window.onload = function() {
 
        fr.readAsDataURL(f);
    });
+   
+  document.querySelector(".requested-sum__input").addEventListener("keypress", isNumberKey, true);
+  function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      evt.preventDefault();
+      return false;
+    } else {
+      return true;
+    }
+  }
 };
