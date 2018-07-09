@@ -32,21 +32,21 @@
 
 		<form action="/doika/save-configurations" method="post" class="form">
 
-			<h2>Бяспека</h2>
+			<h2>Асабістыя дадзеныя</h2>
 			<div class="row">
 				<div class="input">
-					<label for="conf-login" class="conf-title">Лагін</label>
+					<label for="conf-login" class="conf-title">E-mail</label>
 					<input type="text" placeholder="Login" id="conf-login" name="login" class="input__input" value="{{ isset($login) ? $login : '' }}">
 				</div>
 				
 			</div>
 			<div class="row">
 				<div class="input">
-					<label for="conf-password" class="conf-title">Пароль</label>
+					<label for="conf-password" class="conf-title">Новы пароль</label>
 					<input type="password" id="conf-password" name="password" class="input__input" value="{{ isset($password) ? $password : '' }}">
 				</div>
 				<div class="input">
-					<label for="conf-password-confirm" class="conf-title">Падцвержанне паролю</label>
+					<label for="conf-password-confirm" class="conf-title">Пацвержанне новага паролю</label>
 					<input type="password" id="conf-password-confirm" name="conf-password-confirm" class="input__input" value="{{ isset($password_confirm) ? $password_confirm : '' }}">
 				</div>				
 			</div>
