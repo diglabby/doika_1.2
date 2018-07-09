@@ -35,7 +35,7 @@
 			<h2>Бяспека</h2>
 			<div class="row">
 				<div class="input">
-					<label for="conf-login" class="conf-title">Лагін</label>
+					<label for="conf-login" class="conf-title">E-mail</label>
 					<input type="text" placeholder="Login" id="conf-login" name="login" class="input__input" value="{{ Auth::user()->email }}">
 				</div>
 				
