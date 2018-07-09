@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="be">
 <head>
-	<title>Канфігурацыя кампаніі</title>
-
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Scada">
-
-	<link rel="stylesheet" href="css/toggler.css">
-	<link rel="stylesheet" href="css/style.css">	
+  <title>Канфігурацыя кампаніі</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Scada">
+  <link rel="stylesheet" href="css/toggler.css">
+  <link rel="stylesheet" href="css/style.css">	
 </head>
 <body>
 

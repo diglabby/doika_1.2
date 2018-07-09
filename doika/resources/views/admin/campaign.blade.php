@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="be">
 <head>
-	<title>Асобная кампанія</title>
-
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Scada">
-
-	<link rel="stylesheet" href="css/toggler.css">
-	<link rel="stylesheet" href="css/style.css">
+  <title>Асобная кампанія</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Scada">
+  <link rel="stylesheet" href="css/toggler.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="js/jquery-ui.min.js"></script>
-	<script src="js/campaignPage.js"></script>
-
+  <script src="js/campaignPage.js"></script>
 </head>
 <body>
     <header class="doika__header">
