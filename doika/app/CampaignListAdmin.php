@@ -30,7 +30,7 @@ class CampaignListAdmin extends Model
             $Arr['required_amount']=$campaign->campaign_configurations()
                     ->first()->required_amount;
             $Arr['count_payments']= $campaign->payments()->count();
-            $Arr['avg_payment']= $campaign->payments()->avg('amount');
+            $Arr['avg_payment']= round($campaign->payments()->avg('amount'), 2, PHP_ROUND_HALF_DOWN); // акругліць да сотых, issue 40
            
             $Arr['time_start']=$campaign->campaign_configurations()
                     ->first()->time_start;      
