@@ -93,11 +93,12 @@
 
   function PopUpShow(popup) {
     popup.style.display = "block";
-
+    document.body.style.overflow = "hidden";
   }
 
   function PopUpHide(popup) {
     popup.style.display = "none";
+    document.body.style.overflow = "auto";
   }
 
   function init() {
