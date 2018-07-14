@@ -43,11 +43,16 @@
 
       donateHeader.innerHTML = '<p class="donateHeader__title">' + title + '</p>' +
         '<p class="donateHeader__goal">' + goal + '</p>' +
-        '<p class="donateHeader__button">' + button + '</p>';      
-     
+        '<p class="donateHeader__button">' + button + '</p>';
+
       root.appendChild(donateHeader);
       document.getElementsByClassName("donateHeader__button")[0].style.backgroundColor = window.doika.color_button_help;
-      donateHeader.style.backgroundColor = window.doika.color_top_banner;  
+      donateHeader.style.backgroundColor = window.doika.color_top_banner;
+
+      var moduleDOMElement = document.querySelector("#module-donate-wrapper");
+      var banner = document.querySelector(".donateHeader");
+      checkDonateModuleVisibility(moduleDOMElement, banner);
+
     }
   }
 
