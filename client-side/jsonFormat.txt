@@ -2,8 +2,13 @@
 	height: 200, //высота модуля
 	width: 300, //ширина модуля
 
-	backgroundColor: "white", //цвет фона модуля
-	buttonColor: "green", //цвет кнопок и подсветки поля
+	backgroundColor: "rgba(231, 238, 244, 1)", //Колер фона модуля
+	buttonColor: "green", //Колер кнопак з сумамі
+
+	"show_banner": 1, //Паказваць банэр
+	"color_banner_background": "#f6f4f3", //Колер фону банэра
+	"color_banner_help_background": "#f26443", //Колер кнопкі "Дапамагчы"
+	"color_banner_help_text": "#31383e", //Колер тэкста "Дапамагчы"
 
 	titleTextColor: "black", //цвет шрифта заголовка
 	titleFontSize: "18px", //размер шрифта заголовка
