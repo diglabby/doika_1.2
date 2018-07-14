@@ -47,7 +47,7 @@ class ConfigurationPageAdmin extends Model {
     $configurations['key_market'] = self::getConfiguration('key_market',true);
 
     //Паказваць банэр?
-    if(self::getConfiguration('is_test',true) == 1){
+    if(self::getConfiguration('show_banner',true) == 1){
       $configurations['show_banner'] = self::getConfiguration('show_banner',true);
     }
     //Колер фону банэра
