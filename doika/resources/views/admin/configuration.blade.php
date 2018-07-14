@@ -77,30 +77,38 @@
 
 			
 			<h2>Наладкі выгляду</h2>
-			
+
 			<div class="row">
 				<div class="input">
-					<label for="conf-color" class="conf-title">Колер агульнага фону</label>
-					<input type="text" placeholder="TextField" id="conf-color" name="color" class="input__input" value="{{ isset($color) ? $color : '' }}">
+					<label for="conf-color" class="conf-title checkbox-title">Паказваць банэр?</label>
+					<input class="checkbox-test-payments" type="checkbox" name="show_banner" {{isset($show_banner) ? 'checked' : ''}}>
 				</div>
+
 				<div class="input">
-					<label for="conf-color-summ-button" class="conf-title">Колер кнопак з сумамі</label>
-					<input type="text" placeholder="TextField" id="conf-color-summ-button" name="conf-color-summ-button" class="input__input" value="{{ isset($color) ? $color : '' }}">
+					<label for="color_banner_background" class="conf-title">Колер фону банэра</label>
+					<input type="text" placeholder="TextField" id="color_banner_background" name="color_banner_background" class="input__input" value="{{ isset($color_banner_background) ? $color_banner_background : '' }}">
 				</div>
 			</div>
-
-		      <div class="row">
-						<div class="input">
-							<label for="conf-color-banner" class="conf-title">Колер фону верхняга банера</label>
-							<input type="text" placeholder="TextField" id="conf-color-banner" name="color-banner" class="input__input" value="{{ isset($color) ? $color : '' }}">
-						</div>
-		        <div class="input">
-							<label for="conf-color-banner-button" class="conf-title">Колер кнопкі "Дапамагчы"</label>
-							<input type="text" placeholder="TextField" id="conf-color-banner-button" name="conf-color-banner-button" class="input__input" value="{{ isset($color) ? $color : '' }}">
-						</div>
-					</div>
-
-
+			<div class="row">
+				<div class="input">
+					<label for="color_banner_help_background" class="conf-title">Колер кнопкі "Дапамагчы"</label>
+					<input type="text" placeholder="TextField" id="color_banner_help_background" name="color_banner_help_background" class="input__input" value="{{ isset($color_banner_help_background) ? $color_banner_help_background : '' }}">
+				</div>
+				<div class="input">
+					<label for="color_banner_help_text" class="conf-title">Колер тэкста "Дапамагчы"</label>
+					<input type="text" placeholder="TextField" id="color_banner_help_text" name="color_banner_help_text" class="input__input" value="{{ isset($color_banner_help_text) ? $color_banner_help_text : '' }}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input">
+					<label for="color_module_background" class="conf-title">Колер фона модуля</label>
+					<input type="text" placeholder="TextField" id="color_module_background" name="color_module_background" class="input__input" value="{{ isset($color_module_background) ? $color_module_background : '' }}">
+				</div>
+				<div class="input">
+					<label for="color_module_buttons" class="conf-title">Колер кнопак з сумамі</label>
+					<input type="text" placeholder="TextField" id="color_module_buttons" name="color_module_buttons" class="input__input" value="{{ isset($color_module_buttons) ? $color_module_buttons : '' }}">
+				</div>
+			</div>
 
 			<button class="submit-button main-buttons__create-campaign">Захаваць</button>
 		</form>
