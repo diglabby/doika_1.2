@@ -15,7 +15,7 @@
   // Dock donate module banner to top of the page and slide down fixed elements(like top menus)
 
   function dockBannerToTop() {
-      if(!window.doika.bannerDocked) {
+      if(!window.doika.bannerDocked && window.doika.banner_visibility) {
       document.body.classList.add("donateHeader__margin");
 
       window.doika.bannerDocked = true;
@@ -46,9 +46,12 @@
         '<p class="donateHeader__button">' + button + '</p>';
 
       root.appendChild(donateHeader);
-      document.getElementsByClassName("donateHeader__button")[0].style.backgroundColor = window.doika.color_button_help;
-      donateHeader.style.backgroundColor = window.doika.color_top_banner;
-
+      document.getElementsByClassName("donateHeader__button")[0].style.backgroundColor = window.doika.color_banner_help_background;
+	  document.getElementsByClassName("donateHeader__button")[0].style.color = window.doika.color_banner_help_text;
+	  
+      donateHeader.style.backgroundColor = window.doika.color_banner_background;
+	  donateHeader.style.color = window.doika.color_banner_help_text;
+	 
       var moduleDOMElement = document.querySelector("#module-donate-wrapper");
       var banner = document.querySelector(".donateHeader");
       checkDonateModuleVisibility(moduleDOMElement, banner);
@@ -64,36 +67,38 @@
 
   // check if module div inside viewport
   function checkDonateModuleVisibility(moduleDOMElement, banner) {
-      var rect = moduleDOMElement.getBoundingClientRect();
-      var delta = 0;
-      if(window.doika.bannerDocked) {
-        var delta = 60;
-      }
+	  if(window.doika.banner_visibility) {
+		  var rect = moduleDOMElement.getBoundingClientRect();
+		  var delta = 0;
+		  if(window.doika.bannerDocked) {
+			var delta = 60;
+		  }
 
-      if( (rect.bottom - delta) > 0 &&
-          rect.right > 0 &&
-          rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
-          (rect.top + delta) < (window.innerHeight || document.documentElement.clientHeight)
-      ){
+		  if( (rect.bottom - delta) > 0 &&
+			  rect.right > 0 &&
+			  rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+			  (rect.top + delta) < (window.innerHeight || document.documentElement.clientHeight)
+		  ){
 
-        banner.style.display = "none";
-        document.body.classList.remove("donateHeader__margin");
-        window.doika.bannerDocked = false;
+			banner.style.display = "none";
+			document.body.classList.remove("donateHeader__margin");
+			window.doika.bannerDocked = false;
 
-        for (var i in transformedElements) {
-           transformedElements[i].classList.remove("donateHeader__transform");
-        }
-      }
-      else {
-        banner.style.display = "flex";
+			for (var i in transformedElements) {
+			   transformedElements[i].classList.remove("donateHeader__transform");
+			}
+		  }
+		  else {
+			banner.style.display = "flex";
 
-        for (var i in transformedElements) {
-           transformedElements[i].classList.add("donateHeader__transform");
-        }
+			for (var i in transformedElements) {
+			   transformedElements[i].classList.add("donateHeader__transform");
+			}
 
-        document.body.classList.add("donateHeader__margin");
-        window.doika.bannerDocked = true;
-      }
+			document.body.classList.add("donateHeader__margin");
+			window.doika.bannerDocked = true;
+		  }
+	  }
   }
 
   function PopUpShow(popup) {
