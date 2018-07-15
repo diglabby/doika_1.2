@@ -46,12 +46,19 @@
     updateIframeHeight()
     window.parent.doika.title = data.innerText.campaignTitle;
     window.parent.doika.result = data.innerText.resultsText;
-    window.parent.doika.color_top_banner = data.color_top_banner;
-    window.parent.doika.color_button_help = data.color_button_help;
+    window.parent.doika.color_banner_background = data.color_banner_background;
+    window.parent.doika.color_banner_help_background = data.color_banner_help_background;
+	window.parent.doika.color_banner_help_text = data.color_banner_help_text;
+	window.parent.doika.banner_visibility = data.show_banner;
     
     window.parent.postMessage(['dockHeader', true], '*')
-    
-    injectStyles("#module-donate button {backgroundColor:"+ data.color_button_amount +"}");
+	
+
+	//injectStyles(".donateHeader p {color:"+ data.color_banner_help_text +"}");
+	//injectStyles(".donateHeader {backgroundColor:"+ data.color_banner_background +"}");
+	//injectStyles(".donateHeader__button {backgroundColor:"+ data.color_banner_help_background +"}");
+	injectStyles("#module-donate button {backgroundColor:"+ data.color_button_amount +"}");
+	
 
   }
   
