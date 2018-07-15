@@ -3,7 +3,7 @@
 	width: 300, //ширина модуля
 
 	backgroundColor: "rgba(231, 238, 244, 1)", //Колер фона модуля
-	buttonColor: "green", //Колер кнопак з сумамі
+	buttonColor: "rgba(148, 200, 64, 0.34)", //Колер кнопак з сумамі
 
 	"show_banner": 1, //Паказваць банэр
 	"color_banner_background": "#f6f4f3", //Колер фону банэра
