@@ -20,7 +20,6 @@
       <div class="doika__header__menu">
         <button class="menu__menu-item" onclick="document.location.replace('/doika/show-list')">Галоўная</button>
         <button class="menu__menu-item" onclick="document.location.replace('/doika/show-configurations')">Канфiгурацыя модуля</button>
-        <button class="menu__menu-item">Як карыстацца модулем</button>
       </div>
     </header>
 

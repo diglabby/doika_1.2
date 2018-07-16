@@ -18,7 +18,6 @@
       <div class="doika__header__menu">
         <button class="menu__menu-item active" onclick="document.location.replace('/doika/show-list')">Галоўная</button>
         <button class="menu__menu-item" onclick="document.location.replace('/doika/show-configurations')">Канфiгурацыя модуля</button>
-        <button class="menu__menu-item">Як карыстацца модулем</button>
       </div>
     </header>
 
@@ -26,7 +25,6 @@
 
 		<div class="main-buttons">
 			<button onclick="window.open('/doika/create')" class="main-buttons__create-campaign">Стварыць кампанію</button>
-			<button onclick="document.location.replace('/doika/show-list')" class="main-buttons__donate">Дапамажы нам стаць лепей</button>
 		</div>
 
 		<!--<div class="breadcrumbs">Адмін > Галоўная старонка > Спіс кампаній</div>-->
