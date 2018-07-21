@@ -127,7 +127,8 @@
         afterPayScroll();
       break;
       default:
-        var url = '/doika/donate-' + window.parent.doika.campaignId + '?donate=' + window.parent.doikaSum;
+        var backUrl = '&url=' + encodeURIComponent(document.referrer); 
+        var url = '/doika/donate-' + window.parent.doika.campaignId + '?donate=' + window.parent.doikaSum + backUrl;
         AJAXRequest(url, getBePaidJS);
    }
 
