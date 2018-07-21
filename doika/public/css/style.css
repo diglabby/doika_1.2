@@ -529,52 +529,6 @@ main {
 .main-buttons__create-campaign:focus {
   outline: none;
 }
-.main-buttons__donate {
-
-  -webkit-box-shadow: 4px 8px 5.7px 0.3px rgba(62, 93, 11, 0.5);
-
-          box-shadow: 4px 8px 5.7px 0.3px rgba(62, 93, 11, 0.5);
-  width: auto;
-  min-height: 37px;
-  padding: 0px 70px 0px 25px;
-  color:  #fdfefe;
-  font-size: 16px;
-  font-weight: 400;
-  border-radius: 3px;
-  text-transform: uppercase;
-  background: url(../images/donate-icon.png) right 2px no-repeat;
-  background-size: contain;
-  background-color:  #a4d751;
-  -webkit-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
-}
-
-.main-buttons__donate:hover {
-  text-decoration: underline;
-  background: url(../images/donate-icon-hover.png) right 2px no-repeat;
-  background-color:  #a4d751;
-  -webkit-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
-  -webkit-box-shadow: 4px 8px 5.7px 0.3px rgba(62, 93, 11, 0.8);
-          box-shadow: 4px 8px 5.7px 0.3px rgba(62, 93, 11, 0.8);
-}
-
-.main-buttons__donate:active {
-  text-decoration: underline;
-  background: url(../images/donate-icon-hover.png) right 2px no-repeat;
-  background-color:  #a4d751;
-  -webkit-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
-  -webkit-box-shadow: inset 1px 1px 10px #333;
-          box-shadow: inset 1px 1px 10px #333;
-  outline: none;
-}
-.main-buttons__donate:focus {
-  outline: none;
-}
 .list-title {
   margin-top: 25px;
   margin-bottom: 25px;
