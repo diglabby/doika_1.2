@@ -4,7 +4,8 @@
   <title>Канфігурацыя кампаніі</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Scada">
   <link rel="stylesheet" href="css/toggler.css">
-  <link rel="stylesheet" href="css/style.css">	
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jscolor.js"></script>
 </head>
 <body>
 
@@ -84,28 +85,28 @@
 				</div>
 
 				<div class="input">
-					<label for="color_banner_background" class="conf-title">Колер фону банэра</label>
-					<input type="text" placeholder="TextField" id="color_banner_background" name="color_banner_background" class="input__input" value="{{ isset($color_banner_background) ? $color_banner_background : '' }}">
+                    <button class="jscolor {valueElement:'color_banner_background', hash:true, uppercase:false}">Колер фону банэра</button>
+					<input id="color_banner_background" name="color_banner_background" value="{{ isset($color_banner_background) ? $color_banner_background : '' }}" style="display: none">
 				</div>
 			</div>
 			<div class="row">
 				<div class="input">
-					<label for="color_banner_help_background" class="conf-title">Колер кнопкі "Дапамагчы"</label>
-					<input type="text" placeholder="TextField" id="color_banner_help_background" name="color_banner_help_background" class="input__input" value="{{ isset($color_banner_help_background) ? $color_banner_help_background : '' }}">
+                    <button class="jscolor {valueElement:'color_banner_help_background', hash:true, uppercase:false}">Колер кнопкі "Дапамагчы"</button>
+					<input id="color_banner_help_background" name="color_banner_help_background" value="{{ isset($color_banner_help_background) ? $color_banner_help_background : '' }}" style="display: none">
 				</div>
 				<div class="input">
-					<label for="color_banner_help_text" class="conf-title">Колер тэкста "Дапамагчы"</label>
-					<input type="text" placeholder="TextField" id="color_banner_help_text" name="color_banner_help_text" class="input__input" value="{{ isset($color_banner_help_text) ? $color_banner_help_text : '' }}">
+                    <button class="jscolor {valueElement:'color_banner_help_text', hash:true, uppercase:false}">Колер тэкста "Дапамагчы"</button>
+					<input id="color_banner_help_text" name="color_banner_help_text" value="{{ isset($color_banner_help_text) ? $color_banner_help_text : '' }}" style="display: none">
 				</div>
 			</div>
 			<div class="row">
 				<div class="input">
-					<label for="color_module_background" class="conf-title">Колер фона модуля</label>
-					<input type="text" placeholder="TextField" id="color_module_background" name="color_module_background" class="input__input" value="{{ isset($color_module_background) ? $color_module_background : '' }}">
+                    <button class="jscolor {valueElement:'color_module_background', hash:true, uppercase:false}">Колер фона модуля</button>
+					<input id="color_module_background" name="color_module_background" value="{{ isset($color_module_background) ? $color_module_background : '' }}" style="display: none">
 				</div>
 				<div class="input">
-					<label for="color_module_buttons" class="conf-title">Колер кнопак з сумамі</label>
-					<input type="text" placeholder="TextField" id="color_module_buttons" name="color_module_buttons" class="input__input" value="{{ isset($color_module_buttons) ? $color_module_buttons : '' }}">
+                    <button class="jscolor {valueElement:'color_module_buttons', hash:true, uppercase:false}">Колер кнопак з сумамі</button>
+					<input id="color_module_buttons" name="color_module_buttons" value="{{ isset($color_module_buttons) ? $color_module_buttons : '' }}" style="display: none">
 				</div>
 			</div>
 
