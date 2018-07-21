@@ -210,7 +210,7 @@
                 window.doikaSum = 0;
               break;
             case 'dockHeader':
-              if(!document.querySelector(".donateHeader")) {
+              if(!document.querySelector(".donateHeader") && window.doika.banner_visibility) {
                 dockBannerToTop();
                  var moduleDOMElement = document.querySelector("#module-donate-wrapper");
                  var banner = document.querySelector(".donateHeader");
