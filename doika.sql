@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `campaigns`
+-- Структура таблицы `doika_campaigns`
 --
 
-CREATE TABLE `campaigns` (
+CREATE TABLE `doika_campaigns` (
   `id` int(10) UNSIGNED NOT NULL,
   `campaign_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `campaign_active` tinyint(1) NOT NULL,
@@ -35,18 +35,18 @@ CREATE TABLE `campaigns` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `campaigns`
+-- Дамп данных таблицы `doika_campaigns`
 --
 
-INSERT INTO `campaigns` (`id`, `campaign_title`, `campaign_active`, `created_at`, `updated_at`) VALUES
+INSERT INTO `doika_campaigns` (`id`, `campaign_title`, `campaign_active`, `created_at`, `updated_at`) VALUES
 (1, 'Першая кампанія па збору сродкаў', 1, '2018-03-25 14:31:55', '2018-03-25 14:31:55');
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `campaign_configurations`
+-- Структура таблицы `doika_campaign_configurations`
 --
 
-CREATE TABLE `campaign_configurations` (
+CREATE TABLE `doika_campaign_configurations` (
   `id` int(10) UNSIGNED NOT NULL,
   `campaign_id` int(10) UNSIGNED NOT NULL,
   `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -59,19 +59,19 @@ CREATE TABLE `campaign_configurations` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `campaign_configurations`
+-- Дамп данных таблицы `doika_campaign_configurations`
 --
 
-INSERT INTO `campaign_configurations` (`id`, `campaign_id`, `photo`, `required_amount`, `campaign_progress_bar`, `time_start`, `time_end`, `created_at`, `updated_at`) VALUES
+INSERT INTO `doika_campaign_configurations` (`id`, `campaign_id`, `photo`, `required_amount`, `campaign_progress_bar`, `time_start`, `time_end`, `created_at`, `updated_at`) VALUES
 (1, 1, '345x230.png', 123, NULL, '2012-08-07 21:00:00', '2018-04-19 21:00:00', '2018-03-25 14:31:55', '2018-03-31 12:05:40');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `campaign_lang_informations`
+-- Структура таблицы `doika_campaign_lang_informations`
 --
 
-CREATE TABLE `campaign_lang_informations` (
+CREATE TABLE `doika_campaign_lang_informations` (
   `id` int(10) UNSIGNED NOT NULL,
   `campaign_id` int(10) UNSIGNED NOT NULL,
   `campaign_lang` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -88,19 +88,19 @@ CREATE TABLE `campaign_lang_informations` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `campaign_lang_informations`
+-- Дамп данных таблицы `doika_campaign_lang_informations`
 --
 
-INSERT INTO `campaign_lang_informations` (`id`, `campaign_id`, `campaign_lang`, `campaign_title_lang`, `campaign_description_lang`, `campaign_currency_lang`, `required_amount_lang`, `other_amount_lang`, `donate_lang`, `payment_title_lang`, `payment_description_lang`, `created_at`, `updated_at`) VALUES
+INSERT INTO `doika_campaign_lang_informations` (`id`, `campaign_id`, `campaign_lang`, `campaign_title_lang`, `campaign_description_lang`, `campaign_currency_lang`, `required_amount_lang`, `other_amount_lang`, `donate_lang`, `payment_title_lang`, `payment_description_lang`, `created_at`, `updated_at`) VALUES
 (1, 1, 'be', 'Першая кампанія па збору сродкаў', 'Збор сродкаў на добрыя справы', 'BYN', 'Неабходная сума', 'Iншая сума', 'Ахвяруй!', 'Апiсанне спосабу аплаты', 'Тут будет хранится само описание способа оплаты на языке по умолчанию', '2018-03-25 14:31:55', '2018-03-25 14:31:55');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `doika_configurations`
+-- Структура таблицы `doika_doika_configurations`
 --
 
-CREATE TABLE `doika_configurations` (
+CREATE TABLE `doika_doika_configurations` (
   `id` int(10) UNSIGNED NOT NULL,
   `configuration_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `configuration_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -110,10 +110,10 @@ CREATE TABLE `doika_configurations` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `doika_configurations`
+-- Дамп данных таблицы `doika_doika_configurations`
 --
 
-INSERT INTO `doika_configurations` (`id`, `configuration_name`, `configuration_value`, `configuration_active`, `created_at`, `updated_at`) VALUES
+INSERT INTO `doika_doika_configurations` (`id`, `configuration_name`, `configuration_value`, `configuration_active`, `created_at`, `updated_at`) VALUES
 (1, 'lang', 'be', 1, NULL, NULL),
 (2, 'currency_lang', 'BYN', 1, NULL, NULL),
 (3, 'required_amount_lang', 'Неабходная сума', 1, NULL, NULL),
@@ -136,20 +136,20 @@ INSERT INTO `doika_configurations` (`id`, `configuration_name`, `configuration_v
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `migrations`
+-- Структура таблицы `doika_migrations`
 --
 
-CREATE TABLE `migrations` (
+CREATE TABLE `doika_migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `migrations`
+-- Дамп данных таблицы `doika_migrations`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+INSERT INTO `doika_migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2018_01_27_103255_create_campaigns_table', 1),
 (2, '2018_01_27_104607_create_campaign_lang_informations_table', 1),
 (3, '2018_01_28_210536_create_doika_configurations_table', 1),
@@ -159,10 +159,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `payments`
+-- Структура таблицы `doika_payments`
 --
 
-CREATE TABLE `payments` (
+CREATE TABLE `doika_payments` (
   `id` int(10) UNSIGNED NOT NULL,
   `campaign_id` int(11) NOT NULL,
   `amount` double NOT NULL,
@@ -172,19 +172,19 @@ CREATE TABLE `payments` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `payments`
+-- Дамп данных таблицы `doika_payments`
 --
 
-INSERT INTO `payments` (`id`, `campaign_id`, `amount`, `token_payment`, `created_at`, `updated_at`) VALUES
+INSERT INTO `doika_payments` (`id`, `campaign_id`, `amount`, `token_payment`, `created_at`, `updated_at`) VALUES
 (1, 1, 10, 'bb18b7c7-938d-4b27-a259-0ace08229d14', '2018-03-21 05:49:42', '2018-03-21 05:49:42');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Структура таблицы `doika_users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `doika_users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -195,10 +195,10 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `users`
+-- Дамп данных таблицы `doika_users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+INSERT INTO `doika_users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'doika-user', 'sample@sample.com', '$2y$10$g9BFQ80hSBXpLimJMytRhuUVXhO5FkYva63afVG.geR7vR38CTgVW', 'YCr9vH2mjdD5Mc7VCSY0pY8ZKCwmW4QUR6b6ACjXbF3EQsMkFmNXJnjxVZU2', '2018-03-18 10:26:17', '2018-05-08 18:36:05');
 
 --
@@ -206,48 +206,48 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 --
 
 --
--- Индексы таблицы `campaigns`
+-- Индексы таблицы `doika_campaigns`
 --
-ALTER TABLE `campaigns`
+ALTER TABLE `doika_campaigns`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `campaign_configurations`
+-- Индексы таблицы `doika_campaign_configurations`
 --
-ALTER TABLE `campaign_configurations`
+ALTER TABLE `doika_campaign_configurations`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `campaign_configurations_campaign_id_unique` (`campaign_id`);
 
 --
--- Индексы таблицы `campaign_lang_informations`
+-- Индексы таблицы `doika_campaign_lang_informations`
 --
-ALTER TABLE `campaign_lang_informations`
+ALTER TABLE `doika_campaign_lang_informations`
   ADD PRIMARY KEY (`id`),
   ADD KEY `campaign_lang_informations_campaign_id_foreign` (`campaign_id`);
 
 --
--- Индексы таблицы `doika_configurations`
+-- Индексы таблицы `doika_doika_configurations`
 --
-ALTER TABLE `doika_configurations`
+ALTER TABLE `doika_doika_configurations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `migrations`
+-- Индексы таблицы `doika_migrations`
 --
-ALTER TABLE `migrations`
+ALTER TABLE `doika_migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `payments`
+-- Индексы таблицы `doika_payments`
 --
-ALTER TABLE `payments`
+ALTER TABLE `doika_payments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `payments_campaign_id_foreign` (`campaign_id`);
 
 --
--- Индексы таблицы `users`
+-- Индексы таблицы `doika_users`
 --
-ALTER TABLE `users`
+ALTER TABLE `doika_users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -255,39 +255,39 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `campaigns`
+-- AUTO_INCREMENT для таблицы `doika_campaigns`
 --
-ALTER TABLE `campaigns`
+ALTER TABLE `doika_campaigns`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT для таблицы `campaign_configurations`
+-- AUTO_INCREMENT для таблицы `doika_campaign_configurations`
 --
-ALTER TABLE `campaign_configurations`
+ALTER TABLE `doika_campaign_configurations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT для таблицы `campaign_lang_informations`
+-- AUTO_INCREMENT для таблицы `doika_campaign_lang_informations`
 --
-ALTER TABLE `campaign_lang_informations`
+ALTER TABLE `doika_campaign_lang_informations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT для таблицы `doika_configurations`
+-- AUTO_INCREMENT для таблицы `doika_doika_configurations`
 --
-ALTER TABLE `doika_configurations`
+ALTER TABLE `doika_doika_configurations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
--- AUTO_INCREMENT для таблицы `migrations`
+-- AUTO_INCREMENT для таблицы `doika_migrations`
 --
-ALTER TABLE `migrations`
+ALTER TABLE `doika_migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT для таблицы `payments`
+-- AUTO_INCREMENT для таблицы `doika_payments`
 --
-ALTER TABLE `payments`
+ALTER TABLE `doika_payments`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT для таблицы `doika_users`
 --
-ALTER TABLE `users`
+ALTER TABLE `doika_users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
