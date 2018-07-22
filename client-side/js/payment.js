@@ -66,7 +66,7 @@
 
   function back() {
     if(toMain) {
-      window.top.location.href = '/#module-donate';
+      window.top.location.href = '/#module-donate-wrapper';
 
     } else
      window.parent.postMessage(['doikaMain', true], '*')
