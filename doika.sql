@@ -129,7 +129,7 @@ INSERT INTO `doika_doika_configurations` (`id`, `configuration_name`, `configura
 (13, 'color_banner_help_background', '#f26443', 1, '2018-03-28 19:44:30', '2018-05-08 18:36:04'),
 (14, 'color_banner_help_text', '#31383e', 1, '2018-03-28 19:44:30', '2018-05-08 18:36:04'),
 (15, 'color_module_background', '#e7eef4', 1, '2018-03-28 19:44:30', '2018-05-08 18:36:04'),
-(16, 'color_module_buttons', '#dbecbe', 1, '2018-03-28 19:44:30', '2018-05-08 18:36:04'),
+(16, 'color_module_buttons', '#94c840', 1, '2018-03-28 19:44:30', '2018-05-08 18:36:04'),
 (17, 'default_password', '', 1, NULL, '2018-05-08 18:36:05'),
 (18, 'is_test', '', 1, NULL, '2018-05-08 19:00:06');
 
