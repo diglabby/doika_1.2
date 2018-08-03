@@ -97,10 +97,10 @@ INSERT INTO `doika_campaign_lang_informations` (`id`, `campaign_id`, `campaign_l
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `doika_doika_configurations`
+-- Структура таблицы `doika_configurations`
 --
 
-CREATE TABLE `doika_doika_configurations` (
+CREATE TABLE `doika_configurations` (
   `id` int(10) UNSIGNED NOT NULL,
   `configuration_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `configuration_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -110,10 +110,10 @@ CREATE TABLE `doika_doika_configurations` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `doika_doika_configurations`
+-- Дамп данных таблицы `doika_configurations`
 --
 
-INSERT INTO `doika_doika_configurations` (`id`, `configuration_name`, `configuration_value`, `configuration_active`, `created_at`, `updated_at`) VALUES
+INSERT INTO `doika_configurations` (`id`, `configuration_name`, `configuration_value`, `configuration_active`, `created_at`, `updated_at`) VALUES
 (1, 'lang', 'be', 1, NULL, NULL),
 (2, 'currency_lang', 'BYN', 1, NULL, NULL),
 (3, 'required_amount_lang', 'Неабходная сума', 1, NULL, NULL),
@@ -226,9 +226,9 @@ ALTER TABLE `doika_campaign_lang_informations`
   ADD KEY `campaign_lang_informations_campaign_id_foreign` (`campaign_id`);
 
 --
--- Индексы таблицы `doika_doika_configurations`
+-- Индексы таблицы `doika_configurations`
 --
-ALTER TABLE `doika_doika_configurations`
+ALTER TABLE `doika_configurations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -270,9 +270,9 @@ ALTER TABLE `doika_campaign_configurations`
 ALTER TABLE `doika_campaign_lang_informations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT для таблицы `doika_doika_configurations`
+-- AUTO_INCREMENT для таблицы `doika_configurations`
 --
-ALTER TABLE `doika_doika_configurations`
+ALTER TABLE `doika_configurations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT для таблицы `doika_migrations`
