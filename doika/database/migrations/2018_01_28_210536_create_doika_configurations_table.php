@@ -13,7 +13,7 @@ class CreateDoikaConfigurationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('doika_configurations', function (Blueprint $table) {
+        Schema::create('configurations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('configuration_name',255);
             $table->longtext('configuration_value',255);
@@ -29,6 +29,6 @@ class CreateDoikaConfigurationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doika_configurations');
+        Schema::dropIfExists('configurations');
     }
 }
