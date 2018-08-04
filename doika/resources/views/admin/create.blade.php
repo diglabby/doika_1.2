@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="be">
-<head>
-  <title>Стварэнне кампаніі</title>
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Scada">
-  <link rel="stylesheet" href="css/toggler.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="js/jquery-ui.min.js"></script>
-  <script src="index.js"></script>
-  <script src="js/campaignPage.js"></script>
-</head>
-<body>
-
-    <header class="doika__header">
-      <div class="doika__header__wrapper">
-        <div class="logo"></div>
-        <button class="button-quit" onclick="document.location.replace('/')">Перайсці на сайт</button>
-        <button class="button-quit" onclick="document.location.replace('/doika/get-out')">Выхад</button>
-      </div>
-      <div class="doika__header__menu">
-        <button class="menu__menu-item" onclick="document.location.replace('/doika/show-list')">Галоўная</button>
-        <button class="menu__menu-item" onclick="document.location.replace('/doika/show-configurations')">Канфiгурацыя модуля</button>
-      </div>
-    </header>
-
-	<main>
-
+@extends('layouts.admin')
+@section('title', 'Стварэнне кампаніі')
+@section('top_scripts')
+<script src="index.js"></script>
+<script src="js/campaignPage.js"></script>
+@endsection
+@section('content')
 		<div class="breadcrumbs">Адмін > Галоўная старонка > Стварэнне кампаніі</div>
 
 		<form class="form" name="createCampaign" action="/doika/create" enctype="multipart/form-data" method="post">
@@ -102,30 +80,7 @@
         </div>
         <button class="submit-button main-buttons__create-campaign">Захаваць</button>
 		</form>
-
-	</main>
-		<div class="popup-background">
-			<form class="popup-content" action="">
-        <div class="popup-close"></div>
-				<div class="popup-content__left">
-					<div class="lang-name">
-						<label for="codeOfLanguage">Мова (код мовы)</label>
-						<input type="text" name="codeOfLanguage" id="codeOfLanguage">
-					</div>
-					<div class="lang-desc">
-						<label for="descOfLanguage">Апісанне</label>
-						<textarea name="descOfLanguage" id="descOfLanguage" cols="30" rows="10"></textarea>
-					</div>
-					<button class="add-lang__close main-buttons__create-campaign">Захаваць</button>
-				</div>
-				<div class="lang-list">
-					<div class="lang-list__title">Спіс моў</div>
-					<ul class="lang-list__list">
-						<li>беларуская</li>
-					</ul>
-					<button>Дадаць мову</button>
-				</div>
-			</form>
-		</div>
-</body>
-</html>
+@endsection
+@section('popups')
+	@include('shared.popup.language')
+@endsection

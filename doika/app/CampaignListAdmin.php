@@ -8,22 +8,26 @@ use App\ConfigurationPageAdmin;
 class CampaignListAdmin extends Model
 {
     //��������� ������ ������ ��������
-    static public function getListAdminPage($campaigns = 0){
-        if($campaigns === 0){
-           $campaigns = Campaign::all();
-        
+    public static function getListAdminPage($campaigns = 0)
+    {
+        if ($campaigns === 0) {
+            $campaigns = Campaign::all();
         }
+
         $campaignsArr = [];
-        if(!ConfigurationPageAdmin::getConfiguration('default_password',true)){
-           $campaignsArr['first_login'] = 1;
-           
+        if (!ConfigurationPageAdmin::getConfiguration('default_password', true)) {
+            $campaignsArr['first_login'] = 1;
         }
-        foreach($campaigns as $campaign){
+
+        $campaignsArr['version'] = config('app.version');
+        $campaignsArr['version_date'] = new \DateTime(config('app.release_date'));
+
+        foreach ($campaigns as $campaign) {
             $Arr['title']=$campaign->campaign_title;
             $Arr['id']=$campaign->id;
-            if($campaign->campaign_active){
+            if ($campaign->campaign_active) {
                 $Arr['active']='On';
-            }else{
+            } else {
                 $Arr['active']='Off';
             }
             $Arr['collected_amount']= $campaign->payments()->sum('amount');
@@ -33,52 +37,51 @@ class CampaignListAdmin extends Model
             $Arr['avg_payment']= $campaign->payments()->avg('amount');
            
             $Arr['time_start']=$campaign->campaign_configurations()
-                    ->first()->time_start;      
+                    ->first()->time_start;
             $Arr['time_start']= date('d.m.Y', strtotime($Arr['time_start']));
             $Arr['time_end']=$campaign->campaign_configurations()
                     ->first()->time_end;
             $Arr['time_end']=date('d.m.Y', strtotime($Arr['time_end']));
             
             $currentTime = time();
-            $timeEnd = explode('.',$Arr['time_end']);
+            $timeEnd = explode('.', $Arr['time_end']);
             
-            $timeEnd = mktime(0,0,0,$timeEnd[1],$timeEnd[0],$timeEnd[2]);
+            $timeEnd = mktime(0, 0, 0, $timeEnd[1], $timeEnd[0], $timeEnd[2]);
             $timeToEnd =  $timeEnd - $currentTime;
             $timeToEnd = round($timeToEnd/86400, 0, PHP_ROUND_HALF_UP);
             
-            if($timeToEnd > 0) {
+            if ($timeToEnd > 0) {
                 $Arr['time_to_end'] = $timeToEnd;
             } else {
                 $Arr['time_to_end'] = 'Скончана';
-            
             }
-            $campaignsArr['campaigns'][]=$Arr;
+            $campaignsArr['campaigns'][] = $Arr;
         }
         return $campaignsArr;
     }
-    static public function getListAdminPageConditions($id){
-        if($id == 1){
+
+    public static function getListAdminPageConditions($id)
+    {
+        if ($id == 1) {
             $campaigns = Campaign::where('campaign_active', 1)->get();
             return self::getListAdminPage($campaigns);
         }
-        if($id == 2){
+        if ($id == 2) {
             $campaigns = Campaign::where('campaign_active', 0)->get();
             return self::getListAdminPage($campaigns);
-                    
-       }
-       if($id == 3){
-           $campaigns = Campaign::all();
-           $campaignsIsEnded = [];
-           foreach($campaigns as $campaign){
-              $timeEnd = $campaign->campaign_configurations()
+        }
+        if ($id == 3) {
+            $campaigns = Campaign::all();
+            $campaignsIsEnded = [];
+            foreach ($campaigns as $campaign) {
+                $timeEnd = $campaign->campaign_configurations()
                     ->first()->time_end;
-              $timeToEnd =  date('Ymd',strtotime($timeEnd)) - date('Ymd');
-              if($timeToEnd < 0){
-                  $campaignsIsEnded[] = $campaign;
-              }
-           }
-           return self::getListAdminPage($campaignsIsEnded);
-       
-       }
+                $timeToEnd =  date('Ymd', strtotime($timeEnd)) - date('Ymd');
+                if ($timeToEnd < 0) {
+                    $campaignsIsEnded[] = $campaign;
+                }
+            }
+            return self::getListAdminPage($campaignsIsEnded);
+        }
     }
 }
