@@ -386,6 +386,17 @@ body, html {
 
   }
 
+  .module-donate__version {
+    font-family: Roboto, sans-serif;
+    color:  #94989c;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: right;
+    width: 33%;
+    text-decoration: none;
+    float: right;
+  }
+  
   .result__description {
     font-family: Roboto, sans-serif;
     color:  #4c4f51;

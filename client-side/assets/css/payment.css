@@ -105,6 +105,17 @@ body, html {
   display: inline;
 }
 
+.module-donate__version {
+  font-family: Roboto, sans-serif;
+  color:  #94989c;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: right;
+  width: 33%;
+  text-decoration: none;
+  float: right;
+}
+
 .module-donate__message {
   display: none;
   width: 100%;
