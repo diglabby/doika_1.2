@@ -7,7 +7,7 @@ use App\ConfigurationPageAdmin;
 
 class CampaignListAdmin extends Model
 {
-    //��������� ������ ������ ��������
+    //Формируем массив данных компаний
     public static function getListAdminPage($campaigns = 0)
     {
         if ($campaigns === 0) {
