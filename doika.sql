@@ -270,9 +270,9 @@ ALTER TABLE `doika_campaign_configurations`
 ALTER TABLE `doika_campaign_lang_informations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT для таблицы `doika_doika_configurations`
+-- AUTO_INCREMENT для таблицы `doika_configurations`
 --
-ALTER TABLE `doika_doika_configurations`
+ALTER TABLE `doika_configurations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT для таблицы `doika_migrations`
