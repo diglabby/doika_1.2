@@ -19,9 +19,6 @@ class CampaignListAdmin extends Model
             $campaignsArr['first_login'] = 1;
         }
 
-        $campaignsArr['version'] = config('app.version');
-        $campaignsArr['version_date'] = new \DateTime(config('app.release_date'));
-
         foreach ($campaigns as $campaign) {
             $Arr['title']=$campaign->campaign_title;
             $Arr['id']=$campaign->id;
