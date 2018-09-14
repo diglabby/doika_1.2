@@ -34,7 +34,7 @@
 		campaignTitle: "Title", //Заголовок компании, строка
 		campaignDescription: "Description", //Описание компании, строка
 		acceptButtonText: "Дапамагчы", //текст на кнопке отправки
-		resultsText: "Сабрана <span class="summ__highlight">250</span> из <span class="goal__highlight">300</span>", //текст, показывающий, сколько собрано, разметка упростит стилизацию
+		resultsText: "Сабрана <span class="summ__highlight">250</span> з <span class="goal__highlight">300</span>", //текст, показывающий, сколько собрано, разметка упростит стилизацию
 		textInputPlaceholder: "Іншая сумма", //текст плейсхолдера в поле ввода суммы
 		paymentDescriptionTitle: "Описание способов оплаты", //текст самой ссылки
 		paymentDescriptionText: "Текст в окне описания способов оплаты",
