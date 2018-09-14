@@ -63,7 +63,7 @@ class CampaignPageClient extends Model {
         "campaignTitle" => $campaignInformations->campaign_title_lang, //Заголовок компании, строка 
         "campaignDescription" => $campaignInformations->campaign_description_lang, //Описание компании, строка
         "acceptButtonText" => $campaignInformations->donate_lang, //текст на кнопке отправки
-        "resultsText" => 'Сабрана <span class="summ__highlight">'.self::getCurrentFunds($id).'</span> из <span class="goal__highlight">'.$campaignConfigurations->required_amount.'</span>', //текст, показывающий, сколько собрано, разметка упростит стилизацию
+        "resultsText" => 'Сабрана <span class="summ__highlight">'.self::getCurrentFunds($id).'</span> з <span class="goal__highlight">'.$campaignConfigurations->required_amount.'</span>', //текст, показывающий, сколько собрано, разметка упростит стилизацию
         "textInputPlaceholder" => $campaignInformations->other_amount_lang, //текст плейсхолдера в поле ввода суммы
         "paymentDescriptionTitle" => $campaignInformations->payment_title_lang, //текст самой ссылки
         "paymentDescriptionText" => $campaignInformations->payment_description_lang,
