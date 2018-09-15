@@ -12,7 +12,7 @@ use App\Campaign_lang_information;
 use App\Doika_configuration;
 use App\Uploader;
 
-//������ ���������� �� ���������� �������� (�������� ����� � ��������/�������������� ���������)
+//Модель работающая со страницами компании (создание новой и просмотр/редактирование выбранной)
 class CampaignPageAdmin extends Model
 {
     static public function getLangDefault(){
@@ -22,7 +22,7 @@ class CampaignPageAdmin extends Model
     }
     static public function createCampaign($request){
         
-        // �������� ����� ��������
+        // создание новой компании
         $newCampaign = new Campaign;
         $newCampaign->campaign_title = $request->title;
         if($request->campaign_active == "on"){
@@ -33,7 +33,7 @@ class CampaignPageAdmin extends Model
         
         $newCampaign->save();
         
-        // �������� ������������ ����� ��������
+        // создание конфигурации новой компании
         $newCampaignConfiguration = new Campaign_configuration; 
         $newCampaignConfiguration->campaign_id = $newCampaign->id;
         
@@ -53,7 +53,7 @@ class CampaignPageAdmin extends Model
         $newCampaignConfiguration->time_end = $request->time_end;
         $newCampaignConfiguration->save();
         
-        // �������� �������� ���������� �� ����� �� ���������
+        // создание страницы информации на языке по умолчанию
         $newLangInformation = new Campaign_lang_information;
         $newLangInformation->campaign_id = $newCampaign->id;
         $newLangInformation->campaign_lang = self::getLangDefault();
@@ -126,7 +126,7 @@ class CampaignPageAdmin extends Model
     }
     static public function updateCampaignPage($id,$request){
         
-        // ���������� ������ ��������
+        // обновление данных компании
         $Campaign = Campaign::find($id);
         $Campaign->campaign_title = $request->title;
         if($request->campaign_active == "on"){
@@ -136,7 +136,7 @@ class CampaignPageAdmin extends Model
         }
         $Campaign->save();
         
-        // ���������� ������������ ��������
+        // обновление конфигурации компании
         $CampaignConfiguration = $Campaign->campaign_configurations()->first(); 
         if($request->hasFile('photo')){
             $CampaignConfiguration->photo = Uploader::upload($request);
@@ -147,7 +147,7 @@ class CampaignPageAdmin extends Model
         $CampaignConfiguration->time_end = $request->time_end;
         $CampaignConfiguration->save();
         
-        // ���������� ���������� �������� �� ����� �� ���������
+        // обновление информации компании на языке по умолчанию
         $LangInformation = $Campaign->campaign_lang_informations()->where('campaign_lang',self::getLangDefault())->first();
         $LangInformation->campaign_title_lang = $request->title;
         $LangInformation->campaign_description_lang = $request->description;

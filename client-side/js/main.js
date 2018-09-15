@@ -26,8 +26,13 @@
     document.getElementsByClassName("result__description")[0].insertAdjacentHTML( 'beforeend', data.innerText.resultsText);
 
     document.getElementById('module-donate').style.backgroundColor = data.backgroundColor;
-	
-	var buttons = document.getElementById('module-donate').querySelectorAll("button");
+
+    var versionLink = document.querySelector(".module-donate__version a");
+    if (versionLink) {
+      versionLink.setAttribute("href", data.releaseUrl);
+    }
+
+    var buttons = document.getElementById('module-donate').querySelectorAll("button");
 
     for( var i = 0; i < buttons.length; i++) {
       buttons[i].style.backgroundColor = data.buttonColor;   
@@ -48,8 +53,8 @@
     window.parent.doika.result = data.innerText.resultsText;
     window.parent.doika.color_banner_background = data.color_banner_background;
     window.parent.doika.color_banner_help_background = data.color_banner_help_background;
-	window.parent.doika.color_banner_help_text = data.color_banner_help_text;
-	window.parent.doika.banner_visibility = data.show_banner;
+    window.parent.doika.color_banner_help_text = data.color_banner_help_text;
+    window.parent.doika.banner_visibility = data.show_banner;
     
     window.parent.postMessage(['dockHeader', true], '*')	
   }

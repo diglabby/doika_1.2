@@ -9,9 +9,8 @@ use App\CampaignPageClient;
 class CampaignClientController extends Controller
 {
     //
-    public function getCampaignClient($id){
-        
-        echo CampaignPageClient::getJSONArrCampaign($id);
-        
+    public function getCampaignClient($id)
+    {
+        return response()->json(CampaignPageClient::getCampaignClientArray($id));
     }
 }

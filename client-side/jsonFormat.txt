@@ -1,6 +1,7 @@
 {
 	height: 200, //высота модуля
 	width: 300, //ширина модуля
+	releaseUrl: "https://github.com/diglabby/doika_1.2", // ссылка на версию
 
 	backgroundColor: "#e7eef4", //Колер фона модуля
 	buttonColor: "#94c840", //Колер кнопак з сумамі
