@@ -99,4 +99,4 @@
 @endsection
 @section('popups')
     @include('shared.popup.language')
-@endsection		
+@endsection

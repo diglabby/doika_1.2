@@ -11,12 +11,14 @@
 		<h1>Спіс кампаній</h1>
 		<select name="list-filter" onchange="window.location.href=this.options[this.selectedIndex].value">
 			@php
-				$selected[$conditions_id ?? 0] = 'selected';
+				$selected = array_fill(0, 4, '');
+				$active = isset($conditions_id) && isset($selected[$conditions_id]) ? $conditions_id : 0;
+				$selected[$active] = 'selected';
 			@endphp
-			<option value="/doika" {{ $selected[0] ?? '' }} >Усе</option>
-			<option value="/doika/show-list-1" {{ $selected[1] ?? '' }}>Актыўныя</option>
-			<option value="/doika/show-list-2" {{ $selected[2] ?? '' }}>Адкладзеныя</option>
-			<option value="/doika/show-list-3" {{ $selected[3] ?? '' }}>Завершаныя</option>
+			<option value="/doika" {{ $selected[0] }} >Усе</option>
+			<option value="/doika/show-list-1" {{ $selected[1] }}>Актыўныя</option>
+			<option value="/doika/show-list-2" {{ $selected[2] }}>Адкладзеныя</option>
+			<option value="/doika/show-list-3" {{ $selected[3] }}>Завершаныя</option>
 		</select>
 	</div>
 

@@ -10,9 +10,16 @@ use App\ConfigurationPageAdmin;
 
 use App\CampaignPageAdmin;
 
-class CampaignPageClient extends Model {
-  static public function getJSONArrCampaign($id){
-        
+class CampaignPageClient extends Model
+{
+  public static function getJSONArrCampaign($id)
+  {
+    $arrCampaign = self::getCampaignClientArray($id);
+    return json_encode($arrCampaign);
+  }
+
+  public static function getCampaignClientArray($id)
+  {
     $campaign = Campaign::find($id);
     if(!$campaign){
       return "Campaign not find!";
@@ -29,7 +36,7 @@ class CampaignPageClient extends Model {
     $arrCampaign = [
       "height" => 200, //высота модуля
       "width" => 300, //ширина модуля
-
+      "releaseUrl" => config('app.release_url'),
       "backgroundColor" => ConfigurationPageAdmin::getConfiguration('color_module_background',true), //Колер фона модуля
       "buttonColor" => ConfigurationPageAdmin::getConfiguration('color_module_buttons',true), //Колер кнопак з сумамі
 
@@ -37,7 +44,6 @@ class CampaignPageClient extends Model {
       "color_banner_background" => ConfigurationPageAdmin::getConfiguration('color_banner_background',true), //Колер фону банэра
       "color_banner_help_background" => ConfigurationPageAdmin::getConfiguration('color_banner_help_background',true), //Колер кнопкі "Дапамагчы"
       "color_banner_help_text" => ConfigurationPageAdmin::getConfiguration('color_banner_help_text',true), //Колер тэкста "Дапамагчы"
-
 
       "titleTextColor" => "#31383e", //цвет шрифта заголовка
       "titleFontSize" => "22px", //размер шрифта заголовка
@@ -47,7 +53,6 @@ class CampaignPageClient extends Model {
 
       "buttonTextColor" => "#f7fafc", //цвет шрифта на кнопках
       "buttonFontSize" => "20px", //размер шрифта заголовка
-
 
       "currency" => 'руб.', //валюта
 
@@ -60,7 +65,7 @@ class CampaignPageClient extends Model {
       "innerText" => [
         "locale" => $lang, // язык текста
         "titleImage" => $campaignConfigurations->photo, //путь до главного изображения, строка
-        "campaignTitle" => $campaignInformations->campaign_title_lang, //Заголовок компании, строка 
+        "campaignTitle" => $campaignInformations->campaign_title_lang, //Заголовок компании, строка
         "campaignDescription" => $campaignInformations->campaign_description_lang, //Описание компании, строка
         "acceptButtonText" => $campaignInformations->donate_lang, //текст на кнопке отправки
         "resultsText" => 'Сабрана <span class="summ__highlight">'.self::getCurrentFunds($id).'</span> з <span class="goal__highlight">'.$campaignConfigurations->required_amount.'</span>', //текст, показывающий, сколько собрано, разметка упростит стилизацию
@@ -71,13 +76,13 @@ class CampaignPageClient extends Model {
         "errorPaymentMessage" => "Текст при неудачном платеже"
       ],
       "showProgressBar" => $campaignConfigurations->campaign_progress_bar
-
     ];
-    $arrJSON = json_encode($arrCampaign);
-    return $arrJSON;        
-
+    
+    return $arrCampaign;
   }
-  static private function getCurrentFunds($id){
+
+  private static function getCurrentFunds($id)
+  {
     $campaign = Campaign::find($id);
     if(isset($campaign->payments)){
       $payments = $campaign->payments->sum('amount');
