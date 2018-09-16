@@ -396,7 +396,11 @@ body, html {
     text-decoration: none;
     float: right;
   }
-  
+  .module-donate__version a {
+    text-decoration: none;
+    color:  #94989c;
+  }
+
   .result__description {
     font-family: Roboto, sans-serif;
     color:  #4c4f51;
@@ -544,6 +548,10 @@ body, html {
   }
 
   .payment__description {
+    width: auto;
+  }
+  .module-donate__version {
+    padding-top: 10px;
     width: auto;
   }
   .result__description {
