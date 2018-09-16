@@ -115,6 +115,10 @@ body, html {
   text-decoration: none;
   float: right;
 }
+.module-donate__version a {
+  text-decoration: none;
+  color:  #94989c;
+}
 
 .module-donate__message {
   display: none;
@@ -315,7 +319,10 @@ body, html {
   .payment__description {
     width: 100%;
   }
-
+  .module-donate__version {
+    padding-top: 10px;
+    width: 100%;
+  }
   .result__description {
     padding-top: 10px;
     padding-bottom: 0;
