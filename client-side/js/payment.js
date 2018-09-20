@@ -66,7 +66,11 @@
 
   function back() {
     if(toMain) {
-      window.top.location.href = '/#module-donate-wrapper';
+      var parse = document.createElement('a');
+      parse.href = document.referrer;
+      var url = parse.protocol + '//' + parse.hostname + parse.pathname+ '#module-donate-wrapper';
+      
+	  window.top.location.href = url;
 
     } else
      window.parent.postMessage(['doikaMain', true], '*')
