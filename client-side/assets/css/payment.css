@@ -105,6 +105,21 @@ body, html {
   display: inline;
 }
 
+.module-donate__version {
+  font-family: Roboto, sans-serif;
+  color:  #94989c;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: right;
+  width: 33%;
+  text-decoration: none;
+  float: right;
+}
+.module-donate__version a {
+  text-decoration: none;
+  color:  #94989c;
+}
+
 .module-donate__message {
   display: none;
   width: 100%;
@@ -304,7 +319,10 @@ body, html {
   .payment__description {
     width: 100%;
   }
-
+  .module-donate__version {
+    padding-top: 10px;
+    width: 100%;
+  }
   .result__description {
     padding-top: 10px;
     padding-bottom: 0;

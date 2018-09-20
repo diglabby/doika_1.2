@@ -22,10 +22,12 @@ class Donate extends Model
                 ->first()->configuration_value == 1){
             $is_test = true;
         }else{
-            
             $is_test = false;
-        
         }
+
+        $url = isset($request->url) ? urldecode($request->url) : ("https://" . $_SERVER['HTTP_HOST'] . '/');
+        $url .= (strpos($url, "?") > 0) ? "&" : "?";
+
         $donate = $request->donate*100;
         $GetTokenParams = [
           "checkout" => [
@@ -34,9 +36,9 @@ class Donate extends Model
             "version" => 2.1,
             "attempts" => 3,
             "settings" => [
-              "success_url" => "https://".$_SERVER['HTTP_HOST']."/?message=1",
-              "decline_url" => "https://".$_SERVER['HTTP_HOST']."/?message=2",
-              "fail_url" => "https://".$_SERVER['HTTP_HOST']."/?message=3",
+              "success_url" => $url . "message=1",
+              "decline_url" => $url . "message=2",
+              "fail_url" => $url . "message=3",
               "notification_url" => "https://".$_SERVER['HTTP_HOST']."/doika/payment-record-db-".$id,
               "language"=> "ru"
             ],

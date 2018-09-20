@@ -13,9 +13,9 @@ class DevController extends Controller
     
     
     }
-    public function getCompanyPage(){
+    public function getCampaignPage(){
         
-        return view('admin.company');
+        return view('admin.campaign');
     
     
     }

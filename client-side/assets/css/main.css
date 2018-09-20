@@ -1,5 +1,5 @@
 #module-donate {
-  background-color: rgba(231, 238, 244, 1);
+  background-color: #e7eef4;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 100%;
@@ -121,20 +121,20 @@ body, html {
     color: #f7fafc;
     font-size: 20px;
     font-weight: 400;
-    background-color: rgba(148, 200, 64, 0.34);
     -webkit-transition: color 0.3s, background-color 0.3s;
     -o-transition: color 0.3s, background-color 0.3s;
     transition: color 0.3s, background-color 0.3s;
     cursor: pointer;
     white-space: nowrap;
+    opacity: 0.36;
   }
 
   .module-donate__button-select.clicked {
-    background-color: #94c840 !important;
     -webkit-transition: background-color 0.3s;
     -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
     outline: none;
+    opacity: 1;
   }
 
   .module-donate__button-select:focus {
@@ -386,6 +386,21 @@ body, html {
 
   }
 
+  .module-donate__version {
+    font-family: Roboto, sans-serif;
+    color:  #94989c;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: right;
+    width: 33%;
+    text-decoration: none;
+    float: right;
+  }
+  .module-donate__version a {
+    text-decoration: none;
+    color:  #94989c;
+  }
+
   .result__description {
     font-family: Roboto, sans-serif;
     color:  #4c4f51;
@@ -533,6 +548,10 @@ body, html {
   }
 
   .payment__description {
+    width: auto;
+  }
+  .module-donate__version {
+    padding-top: 10px;
     width: auto;
   }
   .result__description {

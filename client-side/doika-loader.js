@@ -15,7 +15,7 @@
   // Dock donate module banner to top of the page and slide down fixed elements(like top menus)
 
   function dockBannerToTop() {
-      if(!window.doika.bannerDocked) {
+      if(!window.doika.bannerDocked && window.doika.banner_visibility) {
       document.body.classList.add("donateHeader__margin");
 
       window.doika.bannerDocked = true;
@@ -43,11 +43,19 @@
 
       donateHeader.innerHTML = '<p class="donateHeader__title">' + title + '</p>' +
         '<p class="donateHeader__goal">' + goal + '</p>' +
-        '<p class="donateHeader__button">' + button + '</p>';      
-     
+        '<p class="donateHeader__button">' + button + '</p>';
+
       root.appendChild(donateHeader);
-      document.getElementsByClassName("donateHeader__button")[0].style.backgroundColor = window.doika.color_button_help;
-      donateHeader.style.backgroundColor = window.doika.color_top_banner;  
+      document.getElementsByClassName("donateHeader__button")[0].style.backgroundColor = window.doika.color_banner_help_background;
+	  document.getElementsByClassName("donateHeader__button")[0].style.color = window.doika.color_banner_help_text;
+	  
+      donateHeader.style.backgroundColor = window.doika.color_banner_background;
+	  donateHeader.style.color = window.doika.color_banner_help_text;
+	 
+      var moduleDOMElement = document.querySelector("#module-donate-wrapper");
+      var banner = document.querySelector(".donateHeader");
+      checkDonateModuleVisibility(moduleDOMElement, banner);
+
     }
   }
 
@@ -59,45 +67,48 @@
 
   // check if module div inside viewport
   function checkDonateModuleVisibility(moduleDOMElement, banner) {
-      var rect = moduleDOMElement.getBoundingClientRect();
-      var delta = 0;
-      if(window.doika.bannerDocked) {
-        var delta = 60;
-      }
+	  if(window.doika.banner_visibility) {
+		  var rect = moduleDOMElement.getBoundingClientRect();
+		  var delta = 0;
+		  if(window.doika.bannerDocked) {
+			var delta = 60;
+		  }
 
-      if( (rect.bottom - delta) > 0 &&
-          rect.right > 0 &&
-          rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
-          (rect.top + delta) < (window.innerHeight || document.documentElement.clientHeight)
-      ){
+		  if( (rect.bottom - delta) > 0 &&
+			  rect.right > 0 &&
+			  rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+			  (rect.top + delta) < (window.innerHeight || document.documentElement.clientHeight)
+		  ){
 
-        banner.style.display = "none";
-        document.body.classList.remove("donateHeader__margin");
-        window.doika.bannerDocked = false;
+			banner.style.display = "none";
+			document.body.classList.remove("donateHeader__margin");
+			window.doika.bannerDocked = false;
 
-        for (var i in transformedElements) {
-           transformedElements[i].classList.remove("donateHeader__transform");
-        }
-      }
-      else {
-        banner.style.display = "flex";
+			for (var i in transformedElements) {
+			   transformedElements[i].classList.remove("donateHeader__transform");
+			}
+		  }
+		  else {
+			banner.style.display = "flex";
 
-        for (var i in transformedElements) {
-           transformedElements[i].classList.add("donateHeader__transform");
-        }
+			for (var i in transformedElements) {
+			   transformedElements[i].classList.add("donateHeader__transform");
+			}
 
-        document.body.classList.add("donateHeader__margin");
-        window.doika.bannerDocked = true;
-      }
+			document.body.classList.add("donateHeader__margin");
+			window.doika.bannerDocked = true;
+		  }
+	  }
   }
 
   function PopUpShow(popup) {
     popup.style.display = "block";
-
+    document.body.style.overflow = "hidden";
   }
 
   function PopUpHide(popup) {
     popup.style.display = "none";
+    document.body.style.overflow = "auto";
   }
 
   function init() {
@@ -160,23 +171,23 @@
 
     var wrapper = document.getElementById("module-donate-wrapper");
     window.doika = {};
-    window.doika.companyId = wrapper.getAttribute("data-id");
+    window.doika.campaignId = wrapper.getAttribute("data-id");
 
     switch (getUrlParameter("message")) {
       case '1':
        window.doika.status = "success";
-       wrapper.innerHTML = '<iframe id="module-donate" src="client-side/module-donate-payment.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
+       wrapper.innerHTML = '<iframe id="module-donate" src="/client-side/module-donate-payment.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
       break;
       case '2':
         window.doika.status = "decline";
-        wrapper.innerHTML = '<iframe id="module-donate" src="client-side/module-donate-payment.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
+        wrapper.innerHTML = '<iframe id="module-donate" src="/client-side/module-donate-payment.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
       break;
       case '3':
         window.doika.status = "fail";
-        wrapper.innerHTML = '<iframe id="module-donate" src="client-side/module-donate-payment.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
+        wrapper.innerHTML = '<iframe id="module-donate" src="/client-side/module-donate-payment.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
       break;
       default:
-        wrapper.innerHTML = '<iframe id="module-donate" src="client-side/module-donate-main.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
+        wrapper.innerHTML = '<iframe id="module-donate" src="/client-side/module-donate-main.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
    }
 
     var donateModule = document.getElementById('module-donate');
@@ -191,15 +202,15 @@
                 wrapper.style.height = donateModule.contentWindow.document.body.scrollHeight + 'px';
               break;
             case 'doikaSubmit':
-                wrapper.innerHTML = '<iframe id="module-donate" src="client-side/module-donate-payment.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
+                wrapper.innerHTML = '<iframe id="module-donate" src="/client-side/module-donate-payment.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
                 window.doikaSum = e.data[1];
               break;
             case 'doikaMain':
-                wrapper.innerHTML = '<iframe id="module-donate" src="client-side/module-donate-main.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
+                wrapper.innerHTML = '<iframe id="module-donate" src="/client-side/module-donate-main.html" frameborder="0" scrolling=no height="0" width="100%"></iframe>';
                 window.doikaSum = 0;
               break;
             case 'dockHeader':
-              if(!document.querySelector(".donateHeader")) {
+              if(!document.querySelector(".donateHeader") && window.doika.banner_visibility) {
                 dockBannerToTop();
                  var moduleDOMElement = document.querySelector("#module-donate-wrapper");
                  var banner = document.querySelector(".donateHeader");
@@ -229,8 +240,8 @@
       wrapper.style.height = donateModule.contentWindow.document.body.scrollHeight + 'px';
     });
 
-    loadjscssfile('client-side/assets/css/banner.css','css');
-    loadjscssfile('client-side/assets/css/targetDonatePage.css','css');
+    loadjscssfile('/client-side/assets/css/banner.css','css');
+    loadjscssfile('/client-side/assets/css/targetDonatePage.css','css');
     loadjscssfile('https://js.bepaid.by/begateway-1-latest.min.js','js');
 
     donateModuleLoaded  = true;
@@ -248,7 +259,7 @@
           'Для аплаты Вам спатрэбіцца ўвесці дадзеныя сваёй карты і пацвердзіць плацёж кнопкай “Аплаціць N руб.”, дзе N ― вызначаная Вамі сума.' +
           'Мы прымаем плацяжы з наступных банкаўскіх картаў: MasterCard, Maestro, Visa, Visa Electron, Белкарт.</p>' +
          '<p>Плацяжы з банкаўскіх картак ажыццяўляюцца праз сістэму электронных плацяжоў <a href="https://bepaid.by/"><span style="color:#F7941E">be</span><span' + 'style="color:#65707B">Paid</span>.</a> Плацёжная форма сістэмы адпавядае ўсім патрабаванням бяспекі перадачы звестак (PCI DSS Level 1). Усе канфідэнцыйныя звесткі захоўваюцца ў' + 'зашыфраваным' + 'выглядзе і максімальна ўстойлівыя да ўзлому.</p>' +
-        ' <p>Зварот грашовых сум, калі вы ўжо здзейснілі ахвяраванне, не ажыццяўляецца.</p>' +
+         '<p>Зварот грашовых сум, калі вы ўжо здзейснілі ахвяраванне, не ажыццяўляецца.</p>' +
       '</div>';
 
       /*<!--<div class="b-popup-content-img">

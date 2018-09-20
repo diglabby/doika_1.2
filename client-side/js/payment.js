@@ -2,11 +2,11 @@
   var toMain = false;
 
   function loadConfig() {
-       AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigHTML)
+       AJAXRequest('/doika/client-' + window.parent.doika.campaignId, setConfigHTML)
   }
 
   function loadDataConfig() {
-     AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigData)
+     AJAXRequest('/doika/client-' + window.parent.doika.campaignId, setConfigData)
   }
 
   function setConfigData(data) {
@@ -14,8 +14,8 @@
   }
 
   function setConfigHTML(data) {
-    document.getElementsByClassName("module-donate__title")[0].innerText = data.innerText.companyTitle;
-    document.getElementsByClassName("module-donate__description")[0].innerHTML = data.innerText.companyDescription;
+    document.getElementsByClassName("module-donate__title")[0].innerText = data.innerText.campaignTitle;
+    document.getElementsByClassName("module-donate__description")[0].innerHTML = data.innerText.campaignDescription;
     document.getElementsByClassName("payment__description")[0].innerText = data.innerText.paymentDescriptionTitle;
     document.getElementsByClassName("result__description")[0].insertAdjacentHTML( 'beforeend', data.innerText.resultsText);
 
@@ -30,7 +30,7 @@
 
     updateIframeHeight();
 
-    window.parent.doika.title = data.innerText.companyTitle;
+    window.parent.doika.title = data.innerText.campaignTitle;
     window.parent.doika.result = data.innerText.resultsText;
     window.parent.postMessage(['dockHeader', true], '*')
   }
@@ -66,7 +66,11 @@
 
   function back() {
     if(toMain) {
-      window.top.location.href = '/#module-donate';
+      var parse = document.createElement('a');
+      parse.href = document.referrer;
+      var url = parse.protocol + '//' + parse.hostname + parse.pathname+ '#module-donate-wrapper';
+      
+	  window.top.location.href = url;
 
     } else
      window.parent.postMessage(['doikaMain', true], '*')
@@ -90,6 +94,7 @@
         toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
         button.innerHTML = "Паспрабаваць яшчэ раз";
+        afterPayScroll();
       break;
       case 'decline':
         var bePaidForm = document.querySelector(".donate-bePaid__form");
@@ -106,6 +111,7 @@
         backbutton = backbutton.style.display = "none";
         toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
+        afterPayScroll();
       break;
       case 'fail':
         var bePaidForm = document.querySelector(".donate-bePaid__form");
@@ -122,9 +128,11 @@
         toMain = true;
         document.querySelector(".module-donate__message_button").addEventListener("click", back);
         backbutton = backbutton.style.display = "none";
+        afterPayScroll();
       break;
       default:
-        var url = '/doika/donate-' + window.parent.doika.companyId + '?donate=' + window.parent.doikaSum;
+        var backUrl = '&url=' + encodeURIComponent(document.referrer); 
+        var url = '/doika/donate-' + window.parent.doika.campaignId + '?donate=' + window.parent.doikaSum + backUrl;
         AJAXRequest(url, getBePaidJS);
    }
 
@@ -147,4 +155,17 @@
     window.parent.postMessage(['updateIframeHeight', true], '*')
   }
 
+  function afterPayScroll() {
+    // возвращает cookie если есть или undefined
+    function getCookie( name ) {
+      var matches = document.cookie.match( new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent( matches[1] ) : null;
+    }
+
+    if( getCookie( 'pageYOffset' ) ) {
+      window.parent.scrollTo( 0, getCookie ( 'pageYOffset' ) );
+    }
+  }
 }());

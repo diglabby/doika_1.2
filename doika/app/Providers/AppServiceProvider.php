@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('layouts.admin', function ($view) {
+            $view->with('version', config('app.version'));
+            $view->with('version_date', new \DateTime(config('app.release_date')));
+        });
     }
 
     /**

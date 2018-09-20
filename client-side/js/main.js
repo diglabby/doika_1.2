@@ -3,11 +3,11 @@
   var sum = 0;
 
   function loadConfig() {
-       AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigHTML)
+       AJAXRequest('/doika/client-' + window.parent.doika.campaignId, setConfigHTML)
   }
 
   function loadDataConfig() {
-     AJAXRequest('/doika/client-' + window.parent.doika.companyId, setConfigData)
+     AJAXRequest('/doika/client-' + window.parent.doika.campaignId, setConfigData)
   }
 
   function setConfigData(data) {
@@ -15,8 +15,8 @@
   }
 
   function setConfigHTML(data) {
-    document.getElementsByClassName("module-donate__title")[0].innerText = data.innerText.companyTitle;
-    document.getElementsByClassName("module-donate__description")[0].innerHTML = data.innerText.companyDescription;
+    document.getElementsByClassName("module-donate__title")[0].innerText = data.innerText.campaignTitle;
+    document.getElementsByClassName("module-donate__description")[0].innerHTML = data.innerText.campaignDescription;
     var progressBarWidth = document.getElementsByClassName("module-donate__progress-bar")[0].clientWidth;
     document.getElementsByClassName("progress-bar__track")[0].style.width = (((data.currentFunds * progressBarWidth) / data.expectedFunds)) + "px";
     document.getElementsByClassName("module-donate__button-confirm")[0].innerText = data.innerText.acceptButtonText;
@@ -26,14 +26,19 @@
     document.getElementsByClassName("result__description")[0].insertAdjacentHTML( 'beforeend', data.innerText.resultsText);
 
     document.getElementById('module-donate').style.backgroundColor = data.backgroundColor;
-    /*var buttons = document.getElementsByTagName('button');
+
+    var versionLink = document.querySelector(".module-donate__version a");
+    if (versionLink) {
+      versionLink.setAttribute("href", data.releaseUrl);
+    }
+
+    var buttons = document.getElementById('module-donate').querySelectorAll("button");
+
     for( var i = 0; i < buttons.length; i++) {
-      buttons[i].style.backgroundColor = data.buttonColor;
-      buttons[i].style.backgroundColor = data.buttonColor;
-      buttons[i].style.backgroundColor = data.buttonColor;
-      buttons[i].style.fontSize = data.buttonFontSize;
-      buttons[i].style.color = data.buttonTextColor;
-    }*/
+      buttons[i].style.backgroundColor = data.buttonColor;   
+      //buttons[i].style.fontSize = data.buttonFontSize;
+      //buttons[i].style.color = data.buttonTextColor;
+    }
    
     document.getElementsByClassName("module-donate__progress-bar")[0].style.display = data.showProgressBar ? "none" : "block";
 
@@ -44,30 +49,16 @@
     document.getElementsByClassName("module-donate__description")[0].style.fontSize = data.descriptionFontSize;
 
     updateIframeHeight()
-    window.parent.doika.title = data.innerText.companyTitle;
+    window.parent.doika.title = data.innerText.campaignTitle;
     window.parent.doika.result = data.innerText.resultsText;
-    window.parent.doika.color_top_banner = data.color_top_banner;
-    window.parent.doika.color_button_help = data.color_button_help;
+    window.parent.doika.color_banner_background = data.color_banner_background;
+    window.parent.doika.color_banner_help_background = data.color_banner_help_background;
+    window.parent.doika.color_banner_help_text = data.color_banner_help_text;
+    window.parent.doika.banner_visibility = data.show_banner;
     
-    window.parent.postMessage(['dockHeader', true], '*')
-    
-    injectStyles("#module-donate button {backgroundColor:"+ data.color_button_amount +"}");
-
+    window.parent.postMessage(['dockHeader', true], '*')	
   }
   
-    function injectStyles(rule) {
-        var css = rule,
-        head = document.head || document.getElementsByTagName('head')[0],
-        style = document.createElement('style');
-
-        style.type = 'text/css';
-        if (style.styleSheet){
-          style.styleSheet.cssText = css;
-        } else {
-          style.appendChild(document.createTextNode(css));
-        }   
-    }
-
   function AJAXRequest(url, callback) {
         var request = new XMLHttpRequest();
         request.open('GET', url, true);
@@ -152,7 +143,9 @@
       document.getElementsByClassName("module-donate__warning")[0].innerHTML = 'Ахвяраванне не можа быць меньшым за '+ dataConfig.minDonateAmount +' руб!';
       showAlert();
     } else {
-      window.parent.postMessage(['doikaSubmit', sum], '*')
+      window.parent.postMessage(['doikaSubmit', sum], '*');
+      var scrolled = window.parent.window.pageYOffset;
+      document.cookie = "pageYOffset=" + scrolled + "; path=/;";
     }
   }
 
@@ -163,6 +156,7 @@
     document.querySelector(".module-donate__button-confirm").addEventListener("click", submitbutton);
     document.querySelector(".payment__description").addEventListener("click", PopUpShow);
     document.querySelector(".module-donate__text-input").addEventListener("click", resetSumm);
+    document.querySelector(".module-donate__text-input").addEventListener("keypress", isNumberKey, true);
     
     loadDataConfig();
     loadConfig();
@@ -177,6 +171,16 @@
 
   function updateIframeHeight() {
     window.parent.postMessage(['updateIframeHeight', true], '*')
+  }
+
+  function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      evt.preventDefault();
+      return false;
+    } else {
+      return true;
+    }
   }
 
 }());

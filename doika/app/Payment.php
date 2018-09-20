@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    //связи модели один-ко-многим в которых она является дочерней
-    public function company(){
-        return $this->belongsTo('App\Company');
+    //СЃРІСЏР·Рё РјРѕРґРµР»Рё РѕРґРёРЅ-РєРѕ-РјРЅРѕРіРёРј РІ РєРѕС‚РѕСЂС‹С… РѕРЅР° СЏРІР»СЏРµС‚СЃСЏ РґРѕС‡РµСЂРЅРµР№
+    public function campaign(){
+        return $this->belongsTo('App\Campaign');
     }
 }

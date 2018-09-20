@@ -6,86 +6,92 @@ use Illuminate\Database\Eloquent\Model;
 use App\Doika_configuration;
 use App\PasswordChange;
 
-class ConfigurationPageAdmin extends Model
-{
-    //ïîëó÷åíèå îäíîé êîíôèãóðàöèè
-    static public function getConfiguration($configurationName,$getString){
-        $configuration = Doika_configuration::where('configuration_name',$configurationName)
-                ->first(); 
-        if($configuration && $getString){
-           
-                $configuration = $configuration->configuration_value;
-            
-        }
-        return $configuration;
-        
-    }
-    //ñîçäàíèå èëè îáíîâëåíèå îäíîé êîíôèãóðàöèè
-    static public function createOrUpdateConfiguration($configurationName,$value){
-        
-        if(!$value){
-            $value = "";
-        }
-        $configuration = self::getConfiguration($configurationName,false);
-        if($configuration){
-            $configuration->configuration_value = $value;
-            $configuration->save();
-        }else{
-            $configuration = new Doika_configuration;
-            $configuration->configuration_name = $configurationName;
-            $configuration->configuration_value = $value;
-            $configuration->configuration_active = 1;
-            $configuration->save();
-            
-        }
-        
+class ConfigurationPageAdmin extends Model {
+  //Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ð¾Ð´Ð½Ð¾Ð¹ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ð¸
+  static public function getConfiguration($configurationName,$getString){
+    $configuration = Doika_configuration::where('configuration_name',$configurationName)
+      ->first(); 
+    if($configuration && $getString){
+      $configuration = $configuration->configuration_value;
     }
 
-    static public function getConfigurations(){
-        //ñîçäàåì ìàññèâ êîíôèãóðàöèé
-        $configurations = [];
-        // ïîëó÷àåì êëþ÷ åñëè îí ñóùåñòâóåò
-        $configurations['token'] = self::getConfiguration('token',true);
-        
-        //ïîëó÷àåì IdMarket
-        $configurations['id_market'] = self::getConfiguration('id_market',true);
-        //ïîëó÷àåì KeyMarket
-        $configurations['key_market'] = self::getConfiguration('key_market',true);
-        // ïîëó÷àåì öâåò ìîäóëÿ
-        $configurations['color'] = self::getConfiguration('color',true);
-        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ†Ð²ÐµÑ‚ Ñ„Ð¾Ð½Ð° Ð²ÐµÑ€Ñ…Ð½ÐµÐ³Ð¾ Ð±Ð°Ð½Ð½ÐµÑ€Ð°
-        $configurations['color_top_banner'] = self::getConfiguration('color_top_banner',true);
-        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ†Ð²ÐµÑ‚ ÐºÐ½Ð¾Ð¿ÐºÐ¸ "Ð”Ð°Ð¿Ð°Ð¼Ð°Ð³Ñ‡Ñ‹"
-        $configurations['color_button_help'] = self::getConfiguration('color_button_help',true);
-        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ†Ð²ÐµÑ‚ ÐºÐ½Ð¾Ð¿Ð¾Ðº Ñ ÑÑƒÐ¼Ð¼Ð°Ð¼Ð¸
-        $configurations['color_button_amount'] = self::getConfiguration('color_button_amount',true);
-        if(self::getConfiguration('is_test',true) == 1){
-            $configurations['test_payments'] = self::getConfiguration('is_test',true);
-        }
-        
-        // îòäàåì ãîòîâûé ìàññèâ ñ êîíôèãóðàöèÿìè
-        
-        return $configurations; 
+    return $configuration;
+
+  }
+  //ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¸Ð»Ð¸ Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¾Ð´Ð½Ð¾Ð¹ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ð¸
+  static public function createOrUpdateConfiguration($configurationName,$value){
+    if(!$value){
+      $value = "";
     }
-    
-    //îáíîâëÿåì êîíôèãóðàöèè èëè çàïèñûâàåì íîâûå
-    static public function createOrUpdateConfigurations($request){
-        
-       self::createOrUpdateConfiguration('token',$request->token);
-       self::createOrUpdateConfiguration('id_market',$request->id_market);
-       self::createOrUpdateConfiguration('key_market',$request->key_market);
-       self::createOrUpdateConfiguration('color',$request->color);
-       self::createOrUpdateConfiguration('color_top_banner',$request->color_top_banner);
-       self::createOrUpdateConfiguration('color_button_help',$request->color_button_help);
-       self::createOrUpdateConfiguration('color_button_amount',$request->color_button_amount);
-       if($request->test_payments){
-           self::createOrUpdateConfiguration('is_test',1);
-       }else{
-           self::createOrUpdateConfiguration('is_test',0);
-       }
-       PasswordChange::changeProfile($request);
+    $configuration = self::getConfiguration($configurationName,false);
+    if($configuration){
+      $configuration->configuration_value = $value;
+      $configuration->save();
+    }else{
+      $configuration = new Doika_configuration;
+      $configuration->configuration_name = $configurationName;
+      $configuration->configuration_value = $value;
+      $configuration->configuration_active = 1;
+      $configuration->save();
     }
-    
-    
-    
+  }
+
+  static public function getConfigurations(){
+    //ÑÐ¾Ð·Ð´Ð°ÐµÐ¼ Ð¼Ð°ÑÑÐ¸Ð² ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ð¹
+    $configurations = [];
+    // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ ÐºÐ»ÑŽÑ‡ ÐµÑÐ»Ð¸ Ð¾Ð½ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚
+    $configurations['token'] = self::getConfiguration('token',true);
+    //Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ IdMarket
+    $configurations['id_market'] = self::getConfiguration('id_market',true);
+    //Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ KeyMarket
+    $configurations['key_market'] = self::getConfiguration('key_market',true);
+
+    //ÐŸÐ°ÐºÐ°Ð·Ð²Ð°Ñ†ÑŒ Ð±Ð°Ð½ÑÑ€?
+    if(self::getConfiguration('show_banner',true) == 1){
+      $configurations['show_banner'] = self::getConfiguration('show_banner',true);
+    }
+    //ÐšÐ¾Ð»ÐµÑ€ Ñ„Ð¾Ð½Ñƒ Ð±Ð°Ð½ÑÑ€Ð°
+    $configurations['color_banner_background'] = self::getConfiguration('color_banner_background',true);
+    //ÐšÐ¾Ð»ÐµÑ€ ÐºÐ½Ð¾Ð¿ÐºÑ– "Ð”Ð°Ð¿Ð°Ð¼Ð°Ð³Ñ‡Ñ‹"
+    $configurations['color_banner_help_background'] = self::getConfiguration('color_banner_help_background',true);
+    //ÐšÐ¾Ð»ÐµÑ€ Ñ‚ÑÐºÑÑ‚Ð° "Ð”Ð°Ð¿Ð°Ð¼Ð°Ð³Ñ‡Ñ‹"
+    $configurations['color_banner_help_text'] = self::getConfiguration('color_banner_help_text',true);
+    //ÐšÐ¾Ð»ÐµÑ€ Ñ„Ð¾Ð½Ð° Ð¼Ð¾Ð´ÑƒÐ»Ñ
+    $configurations['color_module_background'] = self::getConfiguration('color_module_background',true);
+    //ÐšÐ¾Ð»ÐµÑ€ ÐºÐ½Ð¾Ð¿Ð°Ðº Ð· ÑÑƒÐ¼Ð°Ð¼Ñ–
+    $configurations['color_module_buttons'] = self::getConfiguration('color_module_buttons',true);
+
+    if(self::getConfiguration('is_test',true) == 1){
+      $configurations['test_payments'] = self::getConfiguration('is_test',true);
+    }
+
+    // Ð¾Ñ‚Ð´Ð°ÐµÐ¼ Ð³Ð¾Ñ‚Ð¾Ð²Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð² Ñ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸ÑÐ¼Ð¸
+    return $configurations; 
+  }
+
+  //Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÐµÐ¼ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ð¸ Ð¸Ð»Ð¸ Ð·Ð°Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ Ð½Ð¾Ð²Ñ‹Ðµ
+  static public function createOrUpdateConfigurations($request){
+
+    self::createOrUpdateConfiguration('token',$request->token);
+    self::createOrUpdateConfiguration('id_market',$request->id_market);
+    self::createOrUpdateConfiguration('key_market',$request->key_market);
+
+    if($request->show_banner){
+      self::createOrUpdateConfiguration('show_banner',1);
+    }else{
+      self::createOrUpdateConfiguration('show_banner',0);
+    }
+    self::createOrUpdateConfiguration('color_banner_background',$request->color_banner_background);
+    self::createOrUpdateConfiguration('color_banner_help_background',$request->color_banner_help_background);
+    self::createOrUpdateConfiguration('color_banner_help_text',$request->color_banner_help_text);
+    self::createOrUpdateConfiguration('color_module_background',$request->color_module_background);
+    self::createOrUpdateConfiguration('color_module_buttons',$request->color_module_buttons);
+
+    if($request->test_payments){
+      self::createOrUpdateConfiguration('is_test',1);
+    }else{
+      self::createOrUpdateConfiguration('is_test',0);
+    }
+    PasswordChange::changeProfile($request);
+  }
 }
