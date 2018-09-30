@@ -15,7 +15,8 @@ class CampaignListAdmin extends Model
         }
 
         $campaignsArr = [];
-        if (!ConfigurationPageAdmin::getConfiguration('default_password', true)) {
+        $defaultPassword = ConfigurationPageAdmin::getConfiguration('default_password', true);
+        if ($defaultPassword !== ConfigurationPageAdmin::PASSWORD_CHANGED) {
             $campaignsArr['first_login'] = 1;
         }
 
