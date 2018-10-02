@@ -37,7 +37,7 @@
 				</div>
         <div class="shortcode">
 					<label for="shortcode" class="input-title">Шорткод</label>
-					<input class="shortcode__input" type="text" name="shortcode" id="shortcode" readonly value="<div id='module-donate-wrapper' data-id='{{ $id }}'></div>">
+					<input class="shortcode__input" type="text" name="shortcode" id="shortcode" readonly value="<script src='/client-side/doika-loader.js'></script><div id='module-donate-wrapper' data-id='{{ $id }}'></div>">
                     <button id="shortcode__copy" class="main-buttons__create-campaign" type="button">Скапіраваць</button>
 				</div>
 			</div>
