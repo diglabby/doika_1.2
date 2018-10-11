@@ -36,7 +36,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'release_url' => env('RELEASE_URL', 'https://github.com/diglabby/doika_1.2'),
+    'release_url' => env('RELEASE_URL', 'https://doika.falanster.by/'),
 
     /*
     |--------------------------------------------------------------------------
