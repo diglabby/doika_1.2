@@ -7,6 +7,8 @@ use App\Doika_configuration;
 use App\PasswordChange;
 
 class ConfigurationPageAdmin extends Model {
+  const PASSWORD_CHANGED = '0';
+  
   //получение одной конфигурации
   static public function getConfiguration($configurationName,$getString){
     $configuration = Doika_configuration::where('configuration_name',$configurationName)

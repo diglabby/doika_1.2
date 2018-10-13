@@ -7,6 +7,7 @@ use App\ConfigurationPageAdmin;
 
 class PasswordChange extends Model
 {
+    
     //
     static public function changeProfile($request){
         
@@ -18,7 +19,11 @@ class PasswordChange extends Model
             $user->password = bcrypt($request->password);
         }
         $user->save();
-        ConfigurationPageAdmin::createOrUpdateConfiguration('default_password', '0');
+
+        ConfigurationPageAdmin::createOrUpdateConfiguration(
+            'default_password',
+            ConfigurationPageAdmin::PASSWORD_CHANGED
+        );
         
         
     }
