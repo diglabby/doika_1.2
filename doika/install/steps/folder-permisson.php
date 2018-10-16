@@ -1,5 +1,5 @@
 <?php
-    $folders = array (
+    $dirsNeedWritePermissions = array (
         'storage/framework/'     => '775',
         'storage/logs/'          => '775',
         'bootstrap/cache/'       => '775',
@@ -10,12 +10,12 @@
         <table>
             <tbody>
                 <?php
-                foreach ($folders as $folder => $permission) {
+                foreach ($dirsNeedWritePermissions as $dirname => $permission) {
                     echo "<tr><th>$install_folder$folder</th><td>";
-                    if (intval(substr(sprintf('%o', fileperms($install_folder. $folder)), -3)) >= intval($permission)) {
-                        echo "&#10004;";
+                    if (intval(substr(sprintf('%o', fileperms($install_folder . $dirname)), -3)) >= intval($permission)) {
+                        echo "✔";
                     } else {
-                        echo "&#10008;";
+                        echo "✘";
                         $error = true;
                     }
                     echo "</td></tr>";

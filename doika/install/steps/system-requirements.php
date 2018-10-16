@@ -34,9 +34,9 @@
         foreach ($php_extensions as $extension) {
             echo "<tr><th>$extension</th><td>";
             if (extension_loaded($extension)) {
-                echo "&#10004;";
+                echo "✔";
             } else {
-                echo "&#10008;";
+                echo "✘";
                 $error = true;
             }
             echo "</td></tr>";
@@ -54,10 +54,9 @@
             <td>
                 <?php
                 if (function_exists('apache_get_modules')) {
-                    echo "&#10004;";
+                    echo "✔";
                 } else {
-                    echo "&#10008;";
-                    $error = true;
+                    "✘";
                 }
                 ?>
             </td>
