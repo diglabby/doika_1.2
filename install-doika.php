@@ -59,7 +59,6 @@ switch ($step) {
             } else {
                 echo "Усановка:<br>";
                 
-                $conn =new mysqli($_POST['dbhost'], $_POST['uname'], $_POST['pwd'], $_POST['dbname']);
                 $query = '';
                 $sqlScript = file($mysqlImportFilename);
                 foreach ($sqlScript as $line) {
@@ -69,7 +68,7 @@ switch ($step) {
                         continue;
                     }
                     $query = $query . $line;
-                    if ($endWith == ';') {
+                    if ($endWith === ';') {
                         try {
                             $pdoConnection->exec($query);
                         } catch (\Exception $exception) {
@@ -77,7 +76,7 @@ switch ($step) {
                         }
                     }
                 }
-                echo 'Файл $mysqlImportFilename успешно загружен в базу данных<br>';
+                echo "Файл $mysqlImportFilename успешно загружен в базу данных<br>";
 
                 $my_file = $install_folder.'.env';
                 $handle = fopen($my_file, 'w');
