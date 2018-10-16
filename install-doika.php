@@ -8,7 +8,7 @@
     $mysqlImportFilename ='doika.sql';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 <style><?php include($install_folder . 'install/style.css') ?></style>
 </head>
@@ -74,9 +74,9 @@
 APP_ENV=production
 APP_KEY=base64:8ObMpr3jB1o5SQ3az2pqXo9tSPGAZOponr4eHBoDs9Y=
 
-DB_CONNECTION=mysql
+DB_CONNECTION={$_POST['dbtype']}
 DB_HOST={$_POST['dbhost']}
-DB_PORT=3306
+DB_PORT={$_POST['dbport']}
 DB_DATABASE={$_POST['dbname']}
 DB_USERNAME={$_POST['uname']}
 DB_PASSWORD={$_POST['pwd']}";
