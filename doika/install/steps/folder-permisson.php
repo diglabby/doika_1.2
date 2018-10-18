@@ -7,7 +7,7 @@
     );
     if (file_exists($install_folder)) {
         ?>
-		<h2>Проверка проав доступа</h2>
+		<h2>Проверка прав доступа</h2>
         <table>
             <tbody>
             <?php
