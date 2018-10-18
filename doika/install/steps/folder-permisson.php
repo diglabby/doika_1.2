@@ -7,20 +7,20 @@
     );
     if (file_exists($install_folder)) {
         ?>
+		<h2>Проверка прав доступа</h2>
         <table>
             <tbody>
-                <?php
-                foreach ($dirsNeedWritePermissions as $dirname => $permission) {
-                    echo "<tr><th>$install_folder$folder</th><td>";
-                    if (intval(substr(sprintf('%o', fileperms($install_folder . $dirname)), -3)) >= intval($permission)) {
-                        echo "✔";
+            <?php
+                foreach ($dirsNeedWritePermissions as $folder => $permission) {
+                    echo "<tr><th>$install_folder$folder <small>(требуемые права $permission)</small></th><td>";
+                    if (intval(substr(sprintf('%o', fileperms($install_folder.$folder)), -3)) >= intval($permission)) {
+                        echo '&#10004;';
                     } else {
-                        echo "✘";
+                        echo '&#10008; <small>текущие права '.intval(substr(sprintf('%o', fileperms($install_folder.$folder)), -3)).'</small>';
                         $error = true;
                     }
-                    echo "</td></tr>";
-                }
-                ?>
+                    echo '</td></tr>';
+                } ?>
             </tbody>
         </table>
         <?php

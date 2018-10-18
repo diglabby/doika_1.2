@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta charset="utf-8">
     <style><?php include($install_folder . 'install/style.css') ?></style>
 </head>
 <body>
@@ -39,8 +40,12 @@ switch ($step) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // example: mysql:dbname=testdb;host=127.0.0.1
             $dsn = "{$_POST['dbtype']}:host={$_POST['dbhost']};dbname={$_POST['dbname']};port={$_POST['dbport']}";
+            $options = array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            ); 
+
             try {
-                $pdoConnection = new \PDO($dsn, $_POST['uname'], $_POST['pwd']);
+                $pdoConnection = new \PDO($dsn, $_POST['uname'], $_POST['pwd'], $options );
             } catch (\PDOException $exception) {
                 echo "<q>{$exception->getMessage()}</q>";
                 $pdoConnection === null;
@@ -58,24 +63,12 @@ switch ($step) {
                 include($install_folder . 'install/db-error.php');
             } else {
                 echo "Усановка:<br>";
-                
-                $query = '';
-                $sqlScript = file($mysqlImportFilename);
-                foreach ($sqlScript as $line) {
-                    $startWith = substr(trim($line), 0, 2);
-                    $endWith = substr(trim($line), -1, 1);
-                    if (empty($line) || $startWith == '--' || $startWith == '/*' || $startWith == '//') {
-                        continue;
-                    }
-                    $query = $query . $line;
-                    if ($endWith === ';') {
                         try {
-                            $pdoConnection->exec($query);
+                            $pdoConnection->exec(file_get_contents($mysqlImportFilename));
                         } catch (\Exception $exception) {
                             die("<div class=\"error-response sql-import-response\">Problem in executing the SQL query: <b>{$exception->getMessage()}</b></div>");
                         }
-                    }
-                }
+                
                 echo "Файл $mysqlImportFilename успешно загружен в базу данных<br>";
 
                 $my_file = $install_folder.'.env';
