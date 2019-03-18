@@ -48,10 +48,6 @@ class Donate extends Model
               "description"=> "Order description"
             ],
             "customer"=> [
-              "address"=> "Baker street 221b",
-              "country"=> "GB",
-              "city"=> "London",
-              "email"=> "jake@example.com"
             ],
           ]
         ];
