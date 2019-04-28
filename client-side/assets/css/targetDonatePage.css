@@ -50,7 +50,7 @@
   }
 
   .b-popup .b-popup-content {
-    margin: 0 auto;
+    margin: 100px auto;
     vertical-align: middle;
     position: relative;
     z-index: 101;
