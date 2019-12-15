@@ -21,12 +21,13 @@
             <th>PHP версии <?php echo $php_version; ?> или выше </th>
             <td>
             <?php
-            if (version_compare(PHP_VERSION, $php_version) >= 0) {
-                echo "&#10004;";
-            } else {
+            if (version_compare(PHP_VERSION, $php_version, '>=')) {
+                echo "✔ ";
+            }else{
+                echo "✘ ";
                 $error = true;
-                echo "#10008;";
             }
+            echo 'текущая('.PHP_VERSION.')';
             ?>
             </td>
         </tr>
